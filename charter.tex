@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Reproductor digital con control de velocidad} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,7 +11,7 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Florencia Battocchia} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -85,7 +85,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un\textcolor{red}{... completar con una descripción de una o dos líneas}, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un reproductor digital que permite reproducir o pausar el audio y disminuir o aumentar la velocidad  de forma permanente o temporal, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$8000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -108,54 +108,69 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del Proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+\begin{consigna}{black}
+El reproductor está inspirado en tocadiscos con control de velocidad ( pitch control ) como el Technics SL-1200MK2.
+La funcionalidad de control de velocidad permite variar muy levemente la velocidad del plato giradiscos, y por tanto el tono ( pitch en inglés) del sonido que es reproducido, pasando a tener una entonación más aguda si se incrementa la velocidad o más grave si se disminuye. 
+Se trata de un potenciómetro deslizante situado en el lado del brazo fonocaptor con un recorrido de varios centímetros. En el centro del recorrido se sitúa la posición 0, que coincide con la velocidad estándar del tocadiscos (normalmente 33 o 45 RPM) y en los extremos encuentra el máximo incremento a favor o en contra de la variación posible que suele ser de +8\% a -8\%.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+En la siguiente figura se puede observar el tocadiscos Technics SL-1200MK2.
 
 \vspace{25px}
 
+
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
+\includegraphics[width=.7\textwidth]{./Figuras/tocadiscos.jpeg}
+\caption{Technics SL-1200MK2}
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
+Si bien el tocadiscos aun se utiliza, no toda la música se edita en vinilo y armar una colección de vinilos es costosa. Actualmente se tiende a usar equipos digitales con formato de audio como el MP3 por la simplicidad que presentan.
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
+Equipos con la misma funcionalidad del tocadiscos en el mundo digital son controladores MIDI (Musical instrument Digital Interface) donde  interviene la computadora, la problemática de esta implementación es que si la computadora para su proceso de forma repentina, el audio también. 
+
+En la siguiente figura se muestra un Controlador Pioneer Ddj Sb3 Serato.
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.7\textwidth]{./Figuras/MIDI.png}
+\caption{Pioneer Ddj Sb3 Serato}
+\label{fig:diagBloques}
+\end{figure}
+
+Existen equipos mas profesionales que son mas confiables, del tipo stand-alone, que presentan múltiples funcionalidades, algunas de estas son que reproducen entre 4 o 5 formatos de audio (MP3,WAV,AAC, AIFF), leen  pendrive o/y CD, tiene displays, para mostrar información, permiten navegar por la lista de temas y seleccionarlos, en algunos equipos estos displays son táctiles, permiten reproducir o pausar el audio,  comenzar el tema desde un tiempo determinado, controlar la velocidad de reproducción disminuyéndola o aumentándola de forma permanente y temporal.
+
+Estos equipos son importados y extremadamente caro por ejemplo se muestra en la figura siguiente un equipo Pioneer Cdj-2000 Nexus, que cuesta \$454.400 
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.7\textwidth]{./Figuras/equipo_standalone.png}
+\caption{Pioneer Cdj-2000 Nexus}
+\label{fig:diagBloques}
+\end{figure}
+
+El presente proyecto se destaca especialmente por desarrollar una alternativa económica y que mantenga  la funcionalidad simple del vinilo pero en forma digital 
+
+El núcleo del proyecto es el procesamiento de señales digitales en tiempo real,
+el ajuste de velocidad de reproducción se puede lograr mediante el re-muestreo de la señal. Existe una gran cantidad de algoritmos de re-muestreo, variando en calidad y complejidad. El objetivo es elegir uno, disponible en alguna librería existente y portarla al sistema embebido.
+
+En la siguiente figura se muestra un  sistema de procesamiento digital típico
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.7\textwidth]{./Figuras/procesoDigital.png}
+\caption{Diagrama de procesamiento digital}
+\label{fig:diagBloques}
+\end{figure}
+
 \end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
+\begin{consigna}{black} 
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -170,27 +185,13 @@ Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
+Equipo        &  
+						          &              	&        	\\ \hline
 Opositores    &                   &              	&        	\\ \hline
 Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
- 
-Por ejemplo:
-\begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
-\end{itemize}
 
 \end{consigna}
 
@@ -199,24 +200,31 @@ Por ejemplo:
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
+\begin{consigna}{black}
+El propósito de este proyecto es desarrollar un reproductor digital con control de velocidad. Se quiere lograr un dispositivo stand-alone, para evitar la dependencia con la computadora, simple ya que los equipos existentes presentan numerosas funcionalidades pero la realidad es que no todas de estas se usan, por ejemplo vienen con lectoras de CD cuando este ya no se usa y se remplaza por el pendrive, y económico, ya que las alternativas que hay en el mercado son costosas debido a sus  gran cantidad de funciones y a que son importados.
 \end{consigna}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+\begin{consigna}{black}
+El siguiente proyecto incluye:
+\begin{itemize}
+\item Control de velocidad de la reproducción de forma temporal
+\item Control de velocidad de la reproducción de forma permanente
+\item Reproducción y pausa del Audio
+\item Formato de audio WAV grabado en el firmware 
+\end{itemize}
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
+El presente proyecto no incluye:
+\begin{itemize}
+\item Formatos de audio comprimido MP3, AAC, FLAC, ALAC.
+\item Pantalla LCD con información de la pista, tiempo transcurrido, tiempo restante, valor de ajuste de velocidad, forma de onda.
+\item Soporte para almacenamiento USB (sistemas de archivo FAT, FAT32).
+\item Controles adicionales para seleccionar y cargar pistas.
+\item Conteo de BPM ( beats per minute ).
+\item Salida MIDI.
+\end{itemize}
 \end{consigna}
 
 
@@ -237,50 +245,37 @@ Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
-
+\begin{consigna}{black}
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Requerimientos del sistema operativo:
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
+	\item Se deberá utilizar un sistema operativo de tiempo real.
+	\item Se deberá poder manejar  4 interrupciones.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Requerimientos de Hardware:
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
+	\item Se deberá utilizar un microcontrolador de 32 bits
+	\item El microcontrolador deberá operar a una frecuencia de muestreo  de 44,1kHz
+	\item El DAC deberá tener  una profundidad de bit: 10-bit  
+    \item Se deberá utilizar un conector RCA estéreo.
+	\end{enumerate}
+\item Requerimientos de la interfaz gráfica:
+	\begin{enumerate}
+     \item Se deberá tener un botón de reproducción/pausa del audio.
+     \item Se deberá tener 2 Botones de ajuste temporal de velocidad que disminuyen/			  incrementan la velocidad 5\% mientras se encuentran pulsados.
+     \item Se deberá tener un potenciómetro lineal de 100 mm de ajuste permanente de 			  velocidad, que modifica la velocidad 8\% en posiciones extremas, 0\% en posición 			  central. 
 	\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
 
 \end{consigna}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
+\begin{consigna}{black}
 \begin{itemize}
 \item Manual de uso
-\item Diagrama esquemático
 \item Código fuente
-\item Diagrama de instalación
 \item Informe final
 
 \end{itemize}
@@ -290,35 +285,37 @@ Cosas como:
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
+\begin{consigna}{black}
 
 \begin{enumerate}
 \item Grupo de tareas 1
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Elección del Hawdware (50 hs)
 	\end{enumerate}
 \item Grupo de tareas 2
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Construcción del circuito electrónico (50 hs)
 	\end{enumerate}
 	\item Grupo de tareas 3
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item implementar sistema operativo en tiempo real (100 hs)
+	\item Manejo de interrupciones  (50 hs)
+	\end{enumerate}
+	\item Grupo de tareas 4
+	\begin{enumerate}
+	\item Grabar el audio en el firmware (10 hs)
+	\item Analisis del algoritmo de re-muestreo(100 hs)
+	\item Implementación del Algoritmo (100 hs)
+	\item Conversión de la señal digital a analógica (20 hs)
+	\end{enumerate}
+	\item Grupo de tareas 4
+	\begin{enumerate}
+	\item Verificación (50 hs)
+	\item Validación (20 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
+Cantidad total de horas: (600 hs)
 
 \end{consigna}
 
