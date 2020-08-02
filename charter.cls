@@ -70,7 +70,7 @@
 \usepackage{tabularx}
 \usepackage{pgfgantt} 
 \usepackage{graphicx}
-
+\usepackage{longtable} % para tablas largas
 
 %\usepackage{tikz}
 %\usetikzlibrary{arrows, arrows.meta, calc, positioning, quotes, shapes}

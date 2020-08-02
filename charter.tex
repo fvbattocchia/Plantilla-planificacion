@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Reproductor digital con control de velocidad} 
+\titulo{Reproductor de audio digital con control de velocidad de reproducción} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -14,15 +14,15 @@
 \autor{Florencia Battocchia} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
+\director{Pablo Slavkin}
 \pertenenciaDirector{pertenencia} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Matias Battocchia}
+\empresaCliente{Cliente particular}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -34,7 +34,7 @@
  
 \fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{22 de diciembre de 2020}		%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{1 de junio de 2021}		%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -64,11 +64,11 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                                          & 22/06/2020 \\ \hline
-1.1      & Ejemplo de un texto muy largo que debiera ocupar más de una línea para que tengan de ejemplo                                                                                																						   & dd/mm/aaaa \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                                     & dd/mm/aaaa \\ \hline
+1.1      & Se modifica el título del documento \newline                                                                                Se modifica el Acta de constitución del proyecto \newline                                                                               
+Se modifica la Descripción técnica-conceptual del proyecto a realizar \newline                                                                               
+Se realiza la tabla de Identificación y análisis de los interesados \newline                                                                               
+Se modifican las secciones 1,2,3 y 5 
+						& 31/07/2020 \\ \hline
 \end{tabularx}
 \end{table}
 
@@ -76,7 +76,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 
 
 
-\section{Acta de Constitución del Proyecto}
+\section{Acta de constitución del proyecto}
 \label{sec:acta}
 
 \begin{flushright}
@@ -85,7 +85,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un reproductor digital que permite reproducir o pausar el audio y disminuir o aumentar la velocidad  de forma permanente o temporal, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$8000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con la Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un dispositivo que almacena y reproduce un archivo de audio digital al cual se le podrá variar la velocidad de reproduccion del audio de forma permanente o temporal, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$242.775, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -105,68 +105,50 @@ Se adjunta a esta acta la planificación inicial.
 
 
 
-\section{Descripción técnica-conceptual del Proyecto a realizar}
+\section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
 \begin{consigna}{black}
-El reproductor está inspirado en tocadiscos con control de velocidad ( pitch control ) como el Technics SL-1200MK2.
-La funcionalidad de control de velocidad permite variar muy levemente la velocidad del plato giradiscos, y por tanto el tono ( pitch en inglés) del sonido que es reproducido, pasando a tener una entonación más aguda si se incrementa la velocidad o más grave si se disminuye. 
-Se trata de un potenciómetro deslizante situado en el lado del brazo fonocaptor con un recorrido de varios centímetros. En el centro del recorrido se sitúa la posición 0, que coincide con la velocidad estándar del tocadiscos (normalmente 33 o 45 RPM) y en los extremos encuentra el máximo incremento a favor o en contra de la variación posible que suele ser de +8\% a -8\%.
+Los primeros reproductores digitales para discjockeys aparecen a finales de los 80, su finalidad es poder reproducir la música almacenada en CDs de audio de manera similar a como se puede hacer con los platos giradiscos, es decir, pudiendo modificar la velocidad a la que se reproduce el tema para acompasarlo a otro ya sonando.
 
-En la siguiente figura se puede observar el tocadiscos Technics SL-1200MK2.
+En 1993 comienza en este tipo de aparatos una fuerte revolución de la mano de Pioneer, que comercializa el CDJ-300, primer reproductor de la gama CDJ, gama que posteriormente ha dominado el mercado profesional de reproductores para DJ. Denon también desde el año 93 ha lanzado reproductores profesionales de gran aceptación, siendo la segunda marca en importancia por detrás de Pioneer en el mercado profesional.
 
-\vspace{25px}
+En 2001 Pioneer volvió a revolucionar el mercado con el CDJ-1000, un reproductor de CDs capaz de emular más que cualquier otro producto lanzado hasta el momento el funcionamiento de un plato giradiscos gracias a que con su jog de gran tamaño se podían emular las técnicas de scratch que se realizan con platos y vinilos. 
 
+A partir del año 2002 comienzan a surgir reproductores profesionales con capacidad para reproducir archivos MP3. Desde el año 2007 la capacidad de reproducir archivos MP3 comienza a convertirse en algo habitual en casi todos los reproductores, que ya son capaces de leer este tipo de archivos desde discos CD-R, pendrives USB o tarjetas de memoria. En la actualidad muchos dispositivos son capaces también de leer otros formatos como el M4A o el AAC, así como formatos sin compresión como WAV o AIFF.
 
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.7\textwidth]{./Figuras/tocadiscos.jpeg}
-\caption{Technics SL-1200MK2}
-\label{fig:diagBloques}
-\end{figure}
+En los últimos 5 años se han popularizado también los reproductores que pueden ser empleados como controladores MIDI con software para Djs.
 
-\vspace{25px}
-Si bien el tocadiscos aun se utiliza, no toda la música se edita en vinilo y armar una colección de vinilos es costosa. Actualmente se tiende a usar equipos digitales con formato de audio como el MP3 por la simplicidad que presentan.
-
-Equipos con la misma funcionalidad del tocadiscos en el mundo digital son controladores MIDI (Musical instrument Digital Interface) donde  interviene la computadora, la problemática de esta implementación es que si la computadora para su proceso de forma repentina, el audio también. 
-
-En la siguiente figura se muestra un Controlador Pioneer Ddj Sb3 Serato.
+Si bien en el mercado existe una gran variedad de estos equipos y con múltiples funciones(\textit{display, play/pause,CUE, track search, autocue,pitch control, pitch bend, master tempo, tempo range, jogwheel, loop, hot cue, navegación, efectos, slip}) son importados y extremadamente caros por ejemplo se muestra en la figura \ref{fig:Pioneer} un equipo Pioneer Cdj-2000 Nexus, que cuesta \$454.400
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/MIDI.png}
-\caption{Pioneer Ddj Sb3 Serato}
-\label{fig:diagBloques}
-\end{figure}
-
-Existen equipos mas profesionales que son mas confiables, del tipo stand-alone, que presentan múltiples funcionalidades, algunas de estas son que reproducen entre 4 o 5 formatos de audio (MP3,WAV,AAC, AIFF), leen  pendrive o/y CD, tiene displays, para mostrar información, permiten navegar por la lista de temas y seleccionarlos, en algunos equipos estos displays son táctiles, permiten reproducir o pausar el audio,  comenzar el tema desde un tiempo determinado, controlar la velocidad de reproducción disminuyéndola o aumentándola de forma permanente y temporal.
-
-Estos equipos son importados y extremadamente caro por ejemplo se muestra en la figura siguiente un equipo Pioneer Cdj-2000 Nexus, que cuesta \$454.400 
-
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.7\textwidth]{./Figuras/equipo_standalone.png}
+\includegraphics[width=.7\textwidth]{./Figuras/reproductordigital.jpeg}
 \caption{Pioneer Cdj-2000 Nexus}
-\label{fig:diagBloques}
+\label{fig:Pioneer}
 \end{figure}
 
-El presente proyecto se destaca especialmente por desarrollar una alternativa económica y que mantenga  la funcionalidad simple del vinilo pero en forma digital 
+El presente proyecto se destaca especialmente por desarrollar una alternativa económica y que mantenga la funcionalidad simple del vinilo pero en forma digital, implementando las funcionalidades de \textit{play/pause, pitch control, pitch Bend}. El control \textit{play/pause} se realiza con un botón y su función es iniciar la reproducción o ponerla en pausa. El \textit{pitch control} se lleva a cabo con un potenciómetro deslizante y su función es la de modificar la velocidad de reproducción de la canción, posicionado en la parte central de su recorrido, la velocidad de reproducción no es afectada, deslizándolo hacia abajo aumenta y hacia arriba disminuye la velocidad de reproducción del audio. El control \textit{ pitch Bend} se realiza con dos botones marcados como +  y - , mientras se pulsan la velocidad de reproducción varía momentaneamente, uno la aumenta y el otro la disminuye.
 
-El núcleo del proyecto es el procesamiento de señales digitales en tiempo real,
-el ajuste de velocidad de reproducción se puede lograr mediante el re-muestreo de la señal. Existe una gran cantidad de algoritmos de re-muestreo, variando en calidad y complejidad. El objetivo es elegir uno, disponible en alguna librería existente y portarla al sistema embebido.
-
-En la siguiente figura se muestra un  sistema de procesamiento digital típico
+Un diagrama general del trabajo se presenta en la figura \ref{fig:diagBloques}. El procesador de audio digital se encuentra representado por el bloque amarillo, mientras que en los bloques color azul se encuentra representado el ambiente con el cual interactúa el procesador. En la entrada del procesador se encuentra la consola que contiene la interfaz con el usuario y la unidad de almacenamiento que contiene el audio en formato wav PCM (\textit{Pulse-Code Modulation}). El procesador lee el audio almacenado, lo procesa según los eventos que recibe de la consola y lo convierte de PCM a PWM. La señal de  salida se amplifica por medio de FETs y se le aplica un filtro de reconstrucción. La salida de audio presenta formato RCA y se conecta a un equipo con entrada line-in que permite escuchar la canción como por ejemplo un \textit{mixer} (mezcladora), este se encuentra en el recuadro verde y no pertene al desarrollo del proyecto. 
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/procesoDigital.png}
-\caption{Diagrama de procesamiento digital}
+\includegraphics[width=.9\textwidth]{./Figuras/diagBloquesDSP.png}
+\caption{Diagrama general del equipo.}
 \label{fig:diagBloques}
+\end{figure}
+
+En la seguiente figura \ref{fig:consola} se detalla la interfaz con el usurio, donde el potenciometro lineal varía la velocidad de reproducción del audio de forma permanente (\textit{pitch control}), aumentando la velocidad cuando se de desplaza hacia abajo, produciendo un sonido mas agudo y disminuyendo la velocidad cuando se lo desplaza hacia arriba produciendo un sonido mas grave. Los botonos con símbolos menos (-) y mas (+) cambian la velocidad de reproducción del audio de forma temportal mientra se los mantiene pulsados (\textit{pitch bend}), también se puede observar en esta figura el botón de play/pausa.
+
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=.5\textwidth]{./Figuras/interfaz.png}
+\caption{Interfaz de usuario.}
+\label{fig:consola}
 \end{figure}
 
 \end{consigna}
-
-
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
@@ -179,16 +161,10 @@ En la siguiente figura se muestra un  sistema de procesamiento digital típico
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
 Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        &  
-						          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Usuario final & \clientename      & \empclientename	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -201,7 +177,7 @@ Usuario final &                   &              	&        	\\ \hline
 \label{sec:proposito}
 
 \begin{consigna}{black}
-El propósito de este proyecto es desarrollar un reproductor digital con control de velocidad. Se quiere lograr un dispositivo stand-alone, para evitar la dependencia con la computadora, simple ya que los equipos existentes presentan numerosas funcionalidades pero la realidad es que no todas de estas se usan, por ejemplo vienen con lectoras de CD cuando este ya no se usa y se remplaza por el pendrive, y económico, ya que las alternativas que hay en el mercado son costosas debido a sus  gran cantidad de funciones y a que son importados.
+El propósito de este proyecto es desarrollar un reproductor de audio digital con control de velocidad de reproducción para obtener un dispositivo de características similares a las del vinilo en forma digital a un costo inferior a los existentes en el mercado. 
 \end{consigna}
 
 \section{2. Alcance del proyecto}
@@ -210,108 +186,142 @@ El propósito de este proyecto es desarrollar un reproductor digital con control
 \begin{consigna}{black}
 El siguiente proyecto incluye:
 \begin{itemize}
-\item Control de velocidad de la reproducción de forma temporal
-\item Control de velocidad de la reproducción de forma permanente
-\item Reproducción y pausa del Audio
-\item Formato de audio WAV grabado en el firmware 
+\item Soporte para almacenamiento de audio.
+\item Control de velocidad de la reproducción del audio de forma temporal.
+\item Control de velocidad de la reproducción del audio de forma permanente.
+\item Reproducción y pausa del audio.
+\item Salida de audio por dos canales.
 \end{itemize}
 
 El presente proyecto no incluye:
 \begin{itemize}
 \item Formatos de audio comprimido MP3, AAC, FLAC, ALAC.
 \item Pantalla LCD con información de la pista, tiempo transcurrido, tiempo restante, valor de ajuste de velocidad, forma de onda.
-\item Soporte para almacenamiento USB (sistemas de archivo FAT, FAT32).
 \item Controles adicionales para seleccionar y cargar pistas.
-\item Conteo de BPM ( beats per minute ).
-\item Salida MIDI.
 \end{itemize}
 \end{consigna}
 
-
-\section{3. Supuestos del proyecto}
-\label{sec:supuestos}
-
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
-
-\begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
-\end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
-
-\section{4. Requerimientos}
+\section{3. Requerimientos}
 \label{sec:requerimientos}
-
 \begin{consigna}{black}
 \begin{enumerate}
 \item Requerimientos del sistema operativo:
 	\begin{enumerate}
 	\item Se deberá utilizar un sistema operativo de tiempo real.
-	\item Se deberá poder manejar  4 interrupciones.
 	\end{enumerate}
 \item Requerimientos de Hardware:
 	\begin{enumerate}
-	\item Se deberá utilizar un microcontrolador de 32 bits
-	\item El microcontrolador deberá operar a una frecuencia de muestreo  de 44,1kHz
-	\item El DAC deberá tener  una profundidad de bit: 10-bit  
-    \item Se deberá utilizar un conector RCA estéreo.
+	\item  Se deberá utilizará la CIAA-NXP como computadora principal.
 	\end{enumerate}
-\item Requerimientos de la interfaz gráfica:
+\item Requerimientos de interfaces externas:
 	\begin{enumerate}
-     \item Se deberá tener un botón de reproducción/pausa del audio.
-     \item Se deberá tener 2 Botones de ajuste temporal de velocidad que disminuyen/			  incrementan la velocidad 5\% mientras se encuentran pulsados.
-     \item Se deberá tener un potenciómetro lineal de 100 mm de ajuste permanente de 			  velocidad, que modifica la velocidad 8\% en posiciones extremas, 0\% en posición 			  central. 
+	\item Deberá tener un botón de reproducción/pausa del audio.
+	\item Deberá tener 2 botones de ajuste temporal de velocidad que disminuyen o incrementan la velocidad mientras se encuentran pulsados.
+	\item Deberá tener un potenciómetro lineal para el ajuste permanente de velocidad.
+	\item Deberá utilizar un conector RCA estéreo para por conectar el dispositivo a un equipo con entrada  line-in.
+	\end{enumerate}
+\item Requerimientos de fuente de audio:
+	\begin{enumerate}
+	\item Se deberá almacenar el archivo de audio en en una memoria SD
+	\item El archivo de audio deberá tener formato .wav con 44100 Hz, calidad estéreo de 16 bits.
+	\item El archivo de audio deberá tener formato PCM.
+	\end{enumerate}
+\item Requerimientos de salida de sonido:
+	\begin{enumerate}
+	\item La velocidad normar de reproducción del audio deberó ser de 44100 Hz.
+	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un un 8\%.
+	\item El \textit{pinch bend} deberá aumentar o disminuir la velocidad normal de reproducción un 5\%.
+	\item Se deberá implementar dos canales de salida PWM.
+	\item El nivel de salida deberá ser de 2,0 Vrms.
+	\end{enumerate}
+\item Requerimientos de alimentacion:
+	\begin{enumerate}
+	\item La alimentación deberá ser de 5 VCC por medio de USB.
 	\end{enumerate}
 \end{enumerate}
-
 \end{consigna}
 
-\section{5. Entregables principales del proyecto}
+\section{4. Entregables principales del proyecto}
 \label{sec:entregables}
 
 \begin{consigna}{black}
 \begin{itemize}
 \item Manual de uso
 \item Código fuente
+\item Esquemático de conexionado.
 \item Informe final
 
 \end{itemize}
 
 \end{consigna}
 
-\section{6. Desglose del trabajo en tareas}
+\section{5. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
 \begin{consigna}{black}
 
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Planificación del proyecto (10hs)
 	\begin{enumerate}
-	\item Elección del Hawdware (50 hs)
+	\item Realizar la planificación del proyecto (10hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Recopilación general de información sobre el proyecto (70 hs)
 	\begin{enumerate}
-	\item Construcción del circuito electrónico (50 hs)
+	\item Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar (10hs)
+	\item Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real (30hs)
+	\item Investigar sobre técnicas de conversión de señal digital a analógica : DAC, PWM o r2r network 		dac (30hs)
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Diseño de hardware (20 hs)
 	\begin{enumerate}
-	\item implementar sistema operativo en tiempo real (100 hs)
-	\item Manejo de interrupciones  (50 hs)
+	\item Diseño esquemático de conexionado. (20hs)
 	\end{enumerate}
-	\item Grupo de tareas 4
+\item Implementación de la consola (50hs)
 	\begin{enumerate}
-	\item Grabar el audio en el firmware (10 hs)
-	\item Analisis del algoritmo de re-muestreo(100 hs)
-	\item Implementación del Algoritmo (100 hs)
-	\item Conversión de la señal digital a analógica (20 hs)
+	\item Realizar el circuito electrónico de la interfaz de usuario (15hs)
+	\item Testeo de del circuito electrónico. (5hs)
+	\item Realizar la lectura de las entradas de la interfaz de usuario. (30hs)
 	\end{enumerate}
-	\item Grupo de tareas 4
+\item Adquisiscion de audio de la memoria SD (32hs)
 	\begin{enumerate}
-	\item Verificación (50 hs)
-	\item Validación (20 hs)
+	\item Realizar circuito electrónico para conectar la memoria SD. (5hs)
+	\item Testeo del circuito electrónico. (5hs)
+	\item Burcar audio que cumpla con el requisito 4. y almacenarlo en la memoria SD. (2hs)
+	\item Realizar la lectura del audio almacenado en la tarjeta SD. (20hs)
+	\end{enumerate}
+\item Implementació del sistema operativo (40hs)
+	\begin{enumerate}
+	\item Implementar sistema operativo RTEMS (20hs)
+	\item Implementar manejo de las interrupciones provenientes de la interfaz de usuario (20hs) 
+	\end{enumerate}
+\item Implementación de los algoritmos de procesamiento de señales (165hs)
+	\begin{enumerate}
+	\item Implementar algoritmo de re-muestreo para aumentar y disminuir la velocidad de reproducción del audio. (40hs)
+	\item Implementar algoritmo de interpolación.(40hs)
+	\item Implementar algoritmo para reducir la profundiad de bits del audio.(40hs)
+	\item Implementar algoritmo para convertir el audio de PCM a PWM por dos canales (40hs)
+	\item Testeo de la salida PWM con osciloscopio y analizador de espectros. (5 hs)
+	\end{enumerate}
+\item Salida de audio (23 hs)
+	\begin{enumerate}	
+	\item Realizar circuito electrónico del amplificador en protoboard. (5hs)
+	\item Realizar circuito electrónico del filtro de reconstrucción en protoboard. (5hs)
+	\item Realizar circuito electrónico del conector RCA en protoboard. (5hs)
+	\item Testeo de los circuitos electrónico. (8hs)
+	\end{enumerate}
+\item Integración del sistema (30hs)
+	\begin{enumerate}
+	\item Integración de los módulos del sistema (20hs).
+	\item Testeo de funcionamiento (10hs).
+	\end{enumerate}
+\item Pruebas (80hs)
+	\begin{enumerate}
+	\item Desarrollar herramientas de testeo, debug y validación. (40 hs)
+	\item Realizar las pruebas de validación del sistema (40 hs)
+	\end{enumerate}
+\item Documentación (80 hs)
+	\begin{enumerate}
+	\item Realizar el informe final del proyecto (50hs)
+	\item Realizar el manual de uso (30hs)
 	\end{enumerate}
 \end{enumerate}
 
@@ -319,201 +329,220 @@ Cantidad total de horas: (600 hs)
 
 \end{consigna}
 
-\section{7. Diagrama de Activity On Node}
+\section{6. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
+\begin{consigna}{black}
+En la siguiente figura \ref{fig:AoN} observa el diagrama de Activity On Node.
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\includegraphics[width=.9\textwidth]{./Figuras/AoN.png}
 \caption{Diagrama en \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
+
+Los tiempos expresados en el diagrama se encuentran en horas. El color de cada recuadro
+representa el grupo de tareas contenidas en el punto.
+
+\end{consigna}
 
 
 
-\section{8. Diagrama de Gantt}
+\section{7. Diagrama de Gantt}
 \label{sec:gantt}
+\begin{consigna}{black}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+A continuación observa el diagrama de Gantt \ref{fig:gant1}
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.1\textwidth]{./Figuras/gant1.png}
+\caption{Diagrama de \textit{Gantt}}
+\label{fig:gant1}
+\end{figure}
 
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.1\textwidth]{./Figuras/gant2.png}
+\caption{Diagrama de \textit{Gantt continuación}}
+\label{fig:gant1}
+\end{figure}
 
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.1\textwidth]{./Figuras/gant3.png}
+\caption{Diagrama de \textit{Gantt continuación}}
+\label{fig:gant1}
+\end{figure}
 
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=1.1\textwidth]{./Figuras/gant4.png}
+\caption{Diagrama de \textit{Gantt continuación}}
+\label{fig:gant1}
 \end{figure}
 
 \end{consigna}
 
-\section{9. Matriz de uso de recursos de materiales}
+\section{8. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
+\begin{consigna}{black}
 
-
-\begin{table}[htpb]
-\label{tab:recursos}
-\centering
-\begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|X|@{}}
-\hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-\end{table}
-
-
-\section{10. Presupuesto detallado del proyecto}
-\label{sec:presupuesto}
-
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
-
-\begin{table}[htpb]
-\centering
-\begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Descripción &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
-  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
-\rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
-\end{tabularx}%
-\end{table}
-
-
-\section{11. Matriz de asignación de responsabilidades}
-\label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
-
-\begin{table}[htpb]
-\centering
-\resizebox{\textwidth}{!}{%
+\begin{table}[]
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
+\cellcolor[HTML]{C0C0C0}                                                                       & \cellcolor[HTML]{C0C0C0}                                                           & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos Requeridos (Horas)}                               \\ \cline{3-6} 
 \rowcolor[HTML]{C0C0C0} 
-\cellcolor[HTML]{C0C0C0} &
-  \cellcolor[HTML]{C0C0C0} &
-  Responsable &
-  Orientador &
-  Equipo &
-  Cliente \\ \cline{3-6} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea}                       & PC & EDU-CIAA-NXP & Osciloscopio & \begin{tabular}[c]{@{}c@{}}Analizador\\ de\\ espectros\end{tabular} \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+1                                                                                              & Planificación del proyecto                                                         &    &              &              &                                                                     \\ \hline
+1.1                                                                                            & Realizar la planificación del proyecto                                             & 10 &              &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+2                                                                                              & Recopilación general de información sobre el proyecto                              &    &              &              &                                                                     \\ \hline
+2.1                                                                                            & Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar & 10 &              &              &                                                                     \\ \hline
+2.2                                                                                            & Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real   & 30 &              &              &                                                                     \\ \hline
+2.3                                                                                            & Investigar sobre técnicas de conversión de señal digital a analógica               & 30 &              &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+3                                                                                              & Diseño de hardware                                                                 &    &              &              &                                                                     \\ \hline
+3.1                                                                                            & Diseño esquemático de conexionado.                                                 & 20 &              &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+4                                                                                              & Implementació de la consola                                                        &    &              &              &                                                                     \\ \hline
+4.1                                                                                            & Realizar el circuito electrónico de la interfaz de usuario                         &    &              &              &                                                                     \\ \hline
+4.2                                                                                            & Testeo de del circuito electrónico                                                 &    &              &              &                                                                     \\ \hline
+4.3                                                                                            & Realizar la lectura de las entradas de la interfaz de usuario                      & 30 & 30           &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+5                                                                                              & Adquisiscion de audio de la memoria SD                                             &    &              &              &                                                                     \\ \hline
+5.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD. (5hs)                   &    &              &              &                                                                     \\ \hline
+5.2                                                                                            & Testeo del circuito electrónico.                                                   &    &              &              &                                                                     \\ \hline
+5.3                                                                                            & Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & 2  &              &              &                                                                     \\ \hline
+5.4                                                                                            & Realizar la lectura del audio almacenado en la tarjeta SD.                         & 20 & 20           &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+6                                                                                              & Implementació del sistema operativo                                                &    &              &              &                                                                     \\ \hline
+6.1                                                                                            & Implementar sistema operativo RTEMS                                                & 20 & 20           &              &                                                                     \\ \hline
+6.2                                                                                            & Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & 20 & 20           &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+7                                                                                              & Implementación de los algoritmos de procesamiento de señales                       &    &              &              &                                                                     \\ \hline
+7.1                                                                                            & Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & 40 & 40           &              &                                                                     \\ \hline
+7.2                                                                                            & Implementar algoritmo de interpolación.                                            & 40 & 40           &              &                                                                     \\ \hline
+7.3                                                                                            & Implemetar algoritmo para reducir la profundiad de bits                            & 40 & 40           &              &                                                                     \\ \hline
+7.4                                                                                            & Implementar algoritmo para convertir el audio de PCM a PWM por dos canales         & 40 & 40           &              &                                                                     \\ \hline
+7.5                                                                                            & Testeo de la salida PWM con osciloscopio y analizador de espectros                 &    &              & 2            & 3                                                                   \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+8                                                                                              & Salida de audio                                                                    &    &              &              &                                                                     \\ \hline
+8.1                                                                                            & Realizar circuito electrónico del amplificador en protoboard                       &    &              &              &                                                                     \\ \hline
+8.2                                                                                            & Realizar circuito electrónico del filtro de reconstrucción en protoboard           &    &              &              &                                                                     \\ \hline
+8.3                                                                                            & Realizar circuito electrónico del conector RCA en protoboard                       &    &              &              &                                                                     \\ \hline
+8.4                                                                                            & Testeo de los circuitos electrónico                                                &    &              & 4            &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+9                                                                                              & Integración del sistema                                                            &    &              &              &                                                                     \\ \hline
+9.1                                                                                            & Integración de los módulos del sistema                                             & 20 & 20           &              &                                                                     \\ \hline
+9.2                                                                                            & Testeo de funcionamiento                                                           &    &              & 5            & 5                                                                   \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+10                                                                                             & Pruebas                                                                            &    &              &              &                                                                     \\ \hline
+10.1                                                                                           & Desarrollar herramientas de testeo, debug y validación.                            & 40 &              &              &                                                                     \\ \hline
+10.2                                                                                           & Realizar las pruebas de validación del sistema                                     & 40 & 40           &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+11                                                                                             & Documentación                                                                      &    &              &              &                                                                     \\ \hline
+11.1                                                                                           & Realizar el informe final del proyecto                                             & 50 &              &              &                                                                     \\ \hline
+11.2                                                                                           & Realizar el manual de uso                                                          & 30 &              &              &                                                                     \\ \hline
+\end{tabular}
+\end{table}
+\end{consigna}
+\section{9. Presupuesto detallado del proyecto}
+\label{sec:presupuesto}
+\begin{table}[]
+\begin{tabular}{|l|c|c|c|}
+\hline
 \rowcolor[HTML]{C0C0C0} 
-\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
-  \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
-  \authorname &
-  \supname &
-  Nombre de alguien &
-  \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabular}%
-}
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS DIRECTOS}                                                                \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Descripción} & Cantidad              & Valor unitario (\$)   & Valor total (\$) \\ \hline
+EDU-CIAA-NXP                                              & 1                     & 4600                  & 4600             \\ \hline
+memoria SD                                                & 1                     & 550                   & 550              \\ \hline
+potenciómetro lineal                                      & 1                     & 220                   & 200              \\ \hline
+transistor FET                                            & 2                     & 200                   & 400              \\ \hline
+cable RCA                                                 & 1                     & 1000                  & 1000             \\ \hline
+componentes varios                                        & \multicolumn{1}{l|}{} & 1000                  & 1000             \\ \hline
+Hs/hombre                                                 & 600Hs                 & 300                   & 180000           \\ \hline
+\multicolumn{3}{|c|}{SUBTOTAL}                                                                            & 186750           \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS}                                                              \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Descripción} & Cantidad              & Valor unitario        & Valor total      \\ \hline
+30\% de los costos directos                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & 56025            \\ \hline
+\multicolumn{3}{|c|}{SUBTOTAL}                                                                            &                  \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{3}{|c|}{\cellcolor[HTML]{C0C0C0}TOTAL}                                                       & 242775           \\ \hline
+\end{tabular}
 \end{table}
 
+
+\section{10. Matriz de asignación de responsabilidades}
+\label{sec:responsabilidades}
+
+\begin{table}[]
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\cellcolor[HTML]{C0C0C0}                                                                       & \cellcolor[HTML]{C0C0C0}                                                           & \multicolumn{3}{c|}{\cellcolor[HTML]{C0C0C0}Nombres y roles definidos en el proyecto}                                                                                                                                   \\ \cline{3-5} 
+\rowcolor[HTML]{C0C0C0} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea}                       & \begin{tabular}[c]{@{}c@{}}Responsable\\  Florencia Battocchia\end{tabular} & \begin{tabular}[c]{@{}c@{}}Orientador\\ Pablo Slavkin\end{tabular} & \begin{tabular}[c]{@{}c@{}}Cliente\\  Matias Battocchia\end{tabular} \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+1                                                                                              & Planificación del proyecto                                                         &                                                                             &                                                                    &                                                                      \\ \hline
+1.1                                                                                            & Realizar la planificación del proyecto                                             & P                                                                           & A                                                                  & A                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+2                                                                                              & Recopilación general de información sobre el proyecto                              &                                                                             &                                                                    &                                                                      \\ \hline
+2.1                                                                                            & Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar & P                                                                           & I                                                                  & C                                                                    \\ \hline
+2.2                                                                                            & Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real   & P                                                                           & I                                                                  & I                                                                    \\ \hline
+2.3                                                                                            & Investigar sobre técnicas de conversión de señal digital a analógica               & P                                                                           & I                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+3                                                                                              & Diseño de hardware                                                                 &                                                                             &                                                                    &                                                                      \\ \hline
+3.1                                                                                            & Diseño esquemático de conexionado.                                                 & P                                                                           & A                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+4                                                                                              & Implementació de la consola                                                        &                                                                             &                                                                    &                                                                      \\ \hline
+4.1                                                                                            & Realizar el circuito electrónico de la interfaz de usuario                         & P                                                                           & I                                                                  & I                                                                    \\ \hline
+4.2                                                                                            & Testeo de del circuito electrónico                                                 & P                                                                           & I                                                                  & I                                                                    \\ \hline
+4.3                                                                                            & Realizar la lectura de las entradas de la interfaz de usuario                      & P                                                                           & I                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+5                                                                                              & Adquisiscion de audio de la memoria SD                                             &                                                                             &                                                                    &                                                                      \\ \hline
+5.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD. (5hs)                   & P                                                                           & I                                                                  & I                                                                    \\ \hline
+5.2                                                                                            & Testeo del circuito electrónico.                                                   & P                                                                           & I                                                                  & I                                                                    \\ \hline
+5.3                                                                                            & Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & P                                                                           & I                                                                  & C                                                                    \\ \hline
+5.4                                                                                            & Realizar la lectura del audio almacenado en la tarjeta SD.                         & P                                                                           & I                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+6                                                                                              & Implementació del sistema operativo                                                &                                                                             &                                                                    &                                                                      \\ \hline
+6.1                                                                                            & Implementar sistema operativo RTEMS                                                & P                                                                           & I                                                                  & I                                                                    \\ \hline
+6.2                                                                                            & Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & P                                                                           & I                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+7                                                                                              & Implementación de los algoritmos de procesamiento de señales                       &                                                                             &                                                                    &                                                                      \\ \hline
+7.1                                                                                            & Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & P                                                                           & C                                                                  & I                                                                    \\ \hline
+7.2                                                                                            & Implementar algoritmo de interpolación.                                            & P                                                                           & C                                                                  & I                                                                    \\ \hline
+7.3                                                                                            & Implemetar algoritmo para reducir la profundiad de bits                            & P                                                                           & C                                                                  & I                                                                    \\ \hline
+7.4                                                                                            & Implementar algoritmo para convertir el audio de PCM a PWM por dos canales         & P                                                                           & C                                                                  & I                                                                    \\ \hline
+7.5                                                                                            & Testeo de la salida PWM con osciloscopio y analizador de espectros                 & P                                                                           & A                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+8                                                                                              & Salida de audio                                                                    &                                                                             &                                                                    &                                                                      \\ \hline
+8.1                                                                                            & Realizar circuito electrónico del amplificador en protoboard                       & P                                                                           & I                                                                  & I                                                                    \\ \hline
+8.2                                                                                            & Realizar circuito electrónico del filtro de reconstrucción en protoboard           & P                                                                           & I                                                                  & I                                                                    \\ \hline
+8.3                                                                                            & Realizar circuito electrónico del conector RCA en protoboard                       & P                                                                           & I                                                                  & I                                                                    \\ \hline
+8.4                                                                                            & Testeo de los circuitos electrónico                                                & P                                                                           & I                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+9                                                                                              & Integración del sistema                                                            &                                                                             &                                                                    &                                                                      \\ \hline
+9.1                                                                                            & Integración de los módulos del sistema                                             & P                                                                           & I                                                                  & I                                                                    \\ \hline
+9.2                                                                                            & Testeo de funcionamiento                                                           & P                                                                           & A                                                                  & I                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+10                                                                                             & Pruebas                                                                            &                                                                             &                                                                    &                                                                      \\ \hline
+10.1                                                                                           & Desarrollar herramientas de testeo, debug y validación.                            & P                                                                           & A                                                                  & A                                                                    \\ \hline
+10.2                                                                                           & Realizar las pruebas de validación del sistema                                     & P                                                                           & A                                                                  & A                                                                    \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+11                                                                                             & Documentación                                                                      &                                                                             &                                                                    &                                                                      \\ \hline
+11.1                                                                                           & Realizar el informe final del proyecto                                             & P                                                                           & A                                                                  & A                                                                    \\ \hline
+11.2                                                                                           & Realizar el manual de uso                                                          & P                                                                           & A                                                                  & A                                                                    \\ \hline
+\end{tabular}
+\end{table}
 {\footnotesize
 Referencias:
 \begin{itemize}
@@ -525,14 +554,7 @@ Referencias:
 \end{itemize}
 } %footnotesize
 
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
-
-\section{12. Gestión de riesgos}
+\section{11. Gestión de riesgos}
 \label{sec:riesgos}
 
 \begin{consigna}{red}
