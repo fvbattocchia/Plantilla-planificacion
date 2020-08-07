@@ -75,7 +75,13 @@ Se modifican las secciones 1,2,3 y 5 & 31/07/2020 \\ \hline
 Se realiza el diagrama de Gantt\newline                                                                              
 Se realiza la matriz de recursos materiales \newline                                                                              
 Se realiza el presupuesto detallado del proyecto \newline                                                                              
-Se realiza la matriz de responsables & 4/08/2020\\ \hline
+Se realiza la matriz de responsables & 04/08/2020\\ \hline
+1.3      & Se realiza la gestión de riesgos \newline                                                                              
+Se realiza la gestión de calidad\newline                                                                              
+Se realiza la comunicación del proyecto \newline                                                                              
+Se realiza la gestión de compras \newline                                                                              
+Se realiza el seguimiento y control \newline                                                                              
+Se realiza el proceso de cierre & 08/08/2020\\ \hline
 
 \end{tabularx}
 \end{table}
@@ -232,7 +238,7 @@ Para el desarrollo del presente proyecto se supone que:
 \item Requerimientos de Hardware:
 	\begin{enumerate}
 	\item Se deberá utilizará la CIAA-NXP como computadora principal.
-	\item Se deberá utilizar un DAC de audio.
+	\item Se deberá utilizar un DAC de audio que genere la señal \textit{Master Clock} de la interfaz I2S internamente 
 	\item Deberá utilizar un conector RCA estéreo para conectar el dispositivo a un equipo con entrada  line-in.
 	\end{enumerate}
 \item Requerimientos de la interfaz de usuario:
@@ -249,7 +255,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\end{enumerate}
 \item Requerimientos de salida de sonido:
 	\begin{enumerate}
-	\item La velocidad normar de reproducción del audio deberó ser de 44100 Hz.
+	\item La velocidad normal de reproducción del audio deberó ser de 44100 Hz.
 	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un un 8\%.
 	\item El \textit{pinch bend} deberá aumentar o disminuir la velocidad normal de reproducción un 5\%.
 	\item Se deberá implementar dos canales de salida.
@@ -646,169 +652,288 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+\begin{consigna}{black}
+a) Identificación de los riesgos y estimación de sus consecuencias:
  
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
+Riesgo 1: Retraso en el cronograma de tareas por prioridades laborales, por enfermedad, cortes de luz.
 \begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
+\item Severidad (S): 7 - Un retraso en la finalización de las tareas generaría posiblemente un retraso en la fecha de presentación del trabajo final.
+\item Probabilidad de ocurrencia (O): 6. Debido a la crisis sanitaria que se esta atravezando hay altas probabilidad de contraer una enfermedad y además esta obliga a realizar el método de trabajo \textit{home-office} que incrementa las exigencias laborales. Por otro lado Bariloche (lugar donde se desarrolla el proyecto) es zona de grandes nevadas y estas en ocaciones dejan a la ciudad sin electricidad por algunos dias.
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: Imposibilidad de conseguir DAC  de audio que genere el master-clock internamente.
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): 6 - Si no se consigue este componente se deberá investigar y aplicar otra forma de convertir la señal de digital a analógica y por lo tanto esto provocará retrasos en el cronograma de trabajo y posiblemente genere una disminución en la calidad de sonido del audio.
+\item Ocurrencia (O): 6 -  Puede suceder que no haya disponibilidad en el mercado o que no se esten realizando envíos a Bariloche. 
 \end{itemize}
 
-Riesgo 3:
+Riesgo 3: Imposibilidad de conseguir un \textit{mixer}
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (S): 7 - Si no se consigue este dispositivo se deberá evaluar e implementar otra alternativapara para amplificar y escuchar el audio, esto provocará retrasos en el cronograma de trabajo. 
+\item Ocurrencia (O): 5 - Si bien este equipo se encuentra a disposición puede suceder que se rompa o se extravíe antes de la fecha de presentación del trabajo final.
 \end{itemize}
 
+Riesgo 4:  Pérdida o destrucción de componentes de hardware.
+\begin{itemize}
+\item Severidad (S): 8 - Si se produce la pérdida o destrucción del prototipo produciría un retraso en el cronograma de trabajo.
+\item Ocurrencia (O): 6 - Es probable que ocurra en etapas de desarrollo.
+\end{itemize}
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+Riesgo 5: Pérdida de los archivos del firmware del proyecto.
+\begin{itemize}
+\item Severidad (S): 9 - Si se produce la pérdida o destrucción del prototipo produciría un retraso en el cronograma de trabajo.
+\item Ocurrencia (O): 5 - Si bien esto es poco probable que ocurra sedeben tomar medidas preventivas para disminuir aún más la probabilidad de ocurrencia.
+\end{itemize}
 
-\begin{table}[htpb]
+b) Tabla de gestión de riesgos:
+
+\begin{table}[H]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
+%\begin{tabularx}{\linewidth}{@{}|c|c|c|c|c|c|c|@{}}
+\begin{tabular}{@{}|c|c|c|c|c|c|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-\end{tabularx}%
+Riesgo & S  & O  & RPN & S* & O* & RPN* \\ \hline
+1-Días perdidos      & 7  & 6  & 42  & 7  & 4  &  28  \\ \hline
+2-Imposibilidad de conseguir DAC & 6  & 6  & 36  & 6  & 3  &  21  \\ \hline
+3-Imposibilidad de conseguir \textit{mixer}      & 7  & 5  & 35  & 7  & 3  &  21  \\ \hline
+4-Pérdida de hardware & 8  & 6  & 48  & 8  & 3  &  24  \\ \hline
+5-Pérdida de software      & 9  & 5  & 45  & 9  & 0  &  0  \\ \hline
+\end{tabular}%
+%\end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a ....
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+Riesgo 1: Se intentará agregar horas extras a las pre-establecidas en el cronograma de trabajo
+\begin{itemize}
+\item Severidad (S): 7 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 4 - Se tratará de ser riguroso en cuanto a los tiempos al momento de llevar a cabo cada tarea.
+\end{itemize}
 
-Riesgo 2: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: Plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación)
+Riesgo 2: Se comprará un DAC con suficiente tiempo de antelación
+\begin{itemize}
+\item Severidad (S): 6 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 3 - Disminuye la probabilidad de ocurrencia ya que se tendrá más tiempo disponible para solucionar los problemas de adquisición del componente.
+\end{itemize}
 
+Riesgo 3: Se buscará otro \textit{mixer} o equipo con entrada \textit{line-in}
+\begin{itemize}
+\item Severidad (S): 7 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 3 - Disminuye la probabilidad de ocurrencia ya que se tendrá seleccionada una segunda opción.  
+\end{itemize}
+
+Riesgo 4: Se tendrán componentes de hardware de repuesto
+\begin{itemize}
+\item Severidad (S): 7 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 3 - Disminuye la probabilidad de ocurrencia a la mitad ya que si se produce la pérdida o destrucción de un componente se tendrá uno de back up para continuar con el desarrollo del proyecto .
+\end{itemize}
+
+Riesgo 5: Se utilizará github para realizar el control de versiones, y además, se realizará un back up por versiones en la pc.
+\begin{itemize}
+\item Severidad (S): 7 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 0 -De esta forma se reduce la probabilidad de ocurrencia a cero, ya que no es posible perder los archivos de firmware del proyecto con las medidas que se adoptarán.
+\end{itemize}
 \end{consigna}
 
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: Copiar acá el requerimiento.
-
-Verificación y validación:
-
-\begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente:\\
-Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido:\\
-Detallar  
-\end{itemize}
-
-\end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, etc.
+\begin{consigna}{black}
+Se indican los procedimientos de verificación y validación para los diferentes requerimientos del proyecto:
+\begin{enumerate}
+\item Requerimientos del sistema operativo:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item  Se deberá utilizar un sistema operativo de tiempo real.
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Inspección de código} \newline                                                                              
+	\newline 
+	\textbf{Validación:} \textit{Inspección de código}
+\item Requerimientos de Hardware:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item Se deberá utilizará la CIAA-NXP como computadora principal.
+	\item Se deberá utilizar un DAC de audio  que genere la señal \textit{Master Clock} de la interfaz I2S internamente 
+	\item Deberá utilizar un conector RCA estéreo para conectar el dispositivo a un equipo con entrada  line-in.
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Revisión de hojas de datos} \newline                                                                              
+	\newline 
+	\textbf{Validación:} \textit{Análisis visual, entrega de hoja de datos de los componentes electronicos}
+\item Requerimientos de la interfaz de usuario:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item Deberá tener un botón de reproducción/pausa del audio.
+	\item Deberá tener 2 botones de ajuste temporal de velocidad que disminuyen o incrementan la velocidad mientras se encuentran pulsados.
+	\item Deberá tener un potenciómetro lineal para el ajuste permanente de velocidad.	
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Análisis visual} \newline                                                                              
+	\newline 
+	\textbf{Validación:} \textit{Análisis visual}
+\item Requerimientos de fuente de audio:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item Se deberá almacenar el archivo de audio en en una memoria SD
+	\item El archivo de audio deberá tener formato .wav con 44100 Hz, calidad estéreo de 16 bits.
+	\item El archivo de audio deberá tener formato PCM.
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Se utilizará una aplicación \textit{open-source} para extraer los metedatos del audio y se exportará la información a un archivo de texto} \newline                                                                              
+	\textbf{Validación:} \textit{Mediante un archivo de texto que contendrá los metedatos del audio}
+\item Requerimientos de salida de sonido:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item La velocidad normal de reproducción del audio deberó ser de 44100 Hz.
+	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un un 8\%.
+	\item El \textit{pinch bend} deberá aumentar o disminuir la velocidad normal de reproducción un 5\%.
+	\item Se deberá implementar dos canales de salida.
+	\item Se deberá presentar un nivel de distorsión mayor a 40 DB.
+	\item El nivel de salida deberá ser de 2,0 Vrms.
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Se armará un set de pruebas que implementen audios con frecuencias entre los rangos especificados en el requerimiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro y se utilizará una aplicación \textit{open-source} para medir los decibelios. Otro conjunto de pruebas que se realizará es mediante la consola en su modo normal de funcionamiento y se repetiran las mediciones mencionadas anterior mente para probar el sistema integrado} \newline                                                                              
+	\newline 
+	\textbf{Validación:} \textit{Se usará la consola en su modo normal de funcionamiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro y se utilizará una aplicación \textit{open-source} para medir los decibelios}
+\item Requerimientos de alimentacion:
+	\begin{consigna}{gray}
+	\begin{enumerate}
+	\item La alimentación deberá ser de 5 VCC por medio de USB.
+	\end{enumerate}
+	\end{consigna}
+	\textbf{Verificación:} \textit{Se utilizará mediante instrumento de medición de tensión} \newline 			\newline                                                                              
+	\textbf{Validación:} \textit{Se utilizará mediante instrumento de medición de tensión}
+\end{enumerate}
 
 \end{consigna}
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
 
-\begin{consigna}{red}
+\begin{consigna}{black}
 El plan de comunicación del proyecto es el siguiente:
 \end{consigna}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[htpb]
+
+\begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+
+\begin{tabular}{|C{3cm}|C{2cm}|C{3cm}|C{2cm}|C{3cm}|C{2cm}|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline 
+Avances y dificultados a enfrentar & \supname   &   Solucionar problemas, establecer pautas para evitar retrasos en el proceso de desarrollo.   & Siempre que haya avances significativos, mínimo una vez por mes. & E-Mail, Google-Meet & \authorname  \\ \hline
+Avances   & \clientename     &  Comunicar avances. & Siempre que
+se logre algo nuevo que funcione & WhatsApp,E-Mail, google-mee            &  \authorname   \\ \hline
+Consultas  & \clientename     &  Realizar consultas de diseño. & Cuando sea necesario & WhatsApp,E-Mail, google-mee            &  \authorname   \\ \hline
 \end{tabular}%
-}
+
 \end{table}
 
 \section{15. Gestión de Compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
+\begin{consigna}{black}
+Se realizará la compra de una placa de desarrollo EDU-CIAA-NXP. El
+proveedor elegido para esta compra es Electrocomponentes S.A. ya que es uno de los
+puntos de venta de la EDU-CIAA-NXP.\newline 
+El DAC de audio se comprará en Dicomse Componentes Electronicos. El proveedor fue elegido en base a que es el unico proveedor de la Argentica que ofrece el componente con las características que se necesita.\newline  
+El resto de los componentes discretos son brindados por Electronina Danher debido a la experiencia personal y confianza que se tiene con el el local de venta.
 \end{consigna}
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
-
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
+\begin{consigna}{black}
 
 \end{consigna}
 
-\begin{table}[!htpb]
-\centering
-\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
+
+\begin{longtable}{|C{3cm}|C{3cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                                                                                                                                                      \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-%}
-\end{table}
+Tarea del WBS                                                                          & Indicador de avance                                              & Frecuencia de reporte              & Resp. de seguimiento      & Persona a ser informada & Método de comunic \\
+\hline \hline
+\endfirsthead
+
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                                                                                                                                                      \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+Tarea del WBS                                                                          & Indicador de avance                                              & Frecuencia de reporte              & Resp. de seguimiento      & Persona a ser informada & Método de comunic \\
+\hline \hline
+\endhead
+
+
+\multicolumn{2}{c}{Sigue en la página siguiente.}
+\endfoot
+
+
+\endlastfoot
+1.1  Realizar la planificación del proyecto                                            & Cantidad de puntos de la planificación completados y corregidos. & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+2.1 Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar & Cada componente o C.I. definido                                  & Al definir cada circuito integrado & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+2.2 Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real   & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+2.3 Investigar sobre técnicas de conversión de señal digital a analógica               & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+2.4 Buscar información sobre procesadores de audio comerciales                         & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+3.1 Diseño esquemático de conexionado.                                                 & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.1 Realizar el circuito electrónico de la interfaz de usuario                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.2 Testeo del circuito electrónico                                                    & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.3 Realizar la lectura de las entradas de la interfaz de usuario                      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.1 Realizar circuito electrónico para conectar la memoria SD.                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.2 Testeo del circuito electrónico.                                                   & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.3 Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.4 Realizar la lectura del audio almacenado en la tarjeta SD.                         & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+6.1 Implementar sistema operativo RTEMS                                                & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+6.2 Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+7.1 Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+7.2 Implementar algoritmo de interpolación.                                            & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+7.3 Testeo de los algoritmos desarrollados                                             & Porcentaje de pruebas unitarias exitosas                         & Al completar cada test unitario    & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.1 Desarrollo librería de generación del DAC por I2S                                  & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.2 Realizar circuito electrónico del DAC externo en protoboard                        & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.3 Testeo de la salida del DAC con osciloscopio y analizador de espectros             & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.4 Realizar circuito electrónico del filtro de reconstrucción en protoboard           & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.5 Realizar circuito electrónico del conector RCA en protoboard                       & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+8.6 Testeo de los circuitos electrónico                                                & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+9.1 Integración de los módulos del sistema                                             & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+9.2 Testeo de funcionamiento                                                           & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+10.1 Desarrollar herramientas de testeo, debug y validación.                           & Cada herramienta y utilidad implementada                         & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+10.2 Realizar las pruebas de validación del sistema                                    & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+11.1 Realizar el informe final del proyecto                                            & Cantidad de puntos completados y corregidos                      & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+11.2 Realizar el manual de uso                                                         & Cantidad de puntos completados y corregidos                      & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+\\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
+\caption{Seguimiento de avance}
+\label{ta:seguimiento}
+\end{longtable}
+
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
-
-\begin{itemize}
-\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
-\end{itemize}
+\begin{consigna}{black}
+Florencia Battocchia es la responsable de analizar el cumplimiento de los
+requerimientos pre-establecidos. A su vez, analizará el tiempo que demoró llevar a cabo los
+distintos grupos de tareas para contrastar con los tiempos del cronograma desarrollado en
+la planificación del proyecto final.\newline  
+Florencia Battocchia es la responsable de analizar los resultados de los distintos grupos
+de tareas, teniendo en cuenta las dificultades que se tuvieron durante el proceso de
+desarrollo y cuál fue su metodología de resolución. Luego del análisis generará un
+documento con los aspectos a mejorar en el prototipo del proyecto. Las conclusiones serán
+plasmadas en las memorias del proyecto final.\newline  
+Una vez finalizado el proyecto, se agradecerá formalmente a todos los colaboradores
+y se informará a los interesados la finalización del mismo. En la memoria del proyecto se
+escribirá un agradecimiento a los colaboradores.
 
 \end{consigna}
 
