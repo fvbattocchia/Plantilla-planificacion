@@ -15,7 +15,7 @@
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Pablo Slavkin}
-\pertenenciaDirector{pertenencia} 
+\pertenenciaDirector{FIUBA} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
@@ -82,7 +82,9 @@ Se realiza la comunicación del proyecto \newline
 Se realiza la gestión de compras \newline                                                                              
 Se realiza el seguimiento y control \newline                                                                              
 Se realiza el proceso de cierre & 08/08/2020\\ \hline
-
+1.4      & Se realizan correcciones varias \newline                                                                              
+Se agrega historias de usuario\newline                                                                              
+Se agrega la tarea de diseño del PCB  & 10/08/2020\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -99,7 +101,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con la Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un dispositivo que almacena y reproduce un archivo de audio digital al cual se le podrá variar la velocidad de reproduccion del audio de forma permanente o temporal, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$243.550, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con la Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un dispositivo que almacena y reproduce un archivo de audio digital al cual se le podrá variar la velocidad de reproduccion del audio de forma permanente o temporal, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \$248.750, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -123,7 +125,7 @@ Se adjunta a esta acta la planificación inicial.
 \label{sec:descripcion}
 
 \begin{consigna}{black}
-Los primeros reproductores digitales para discjockeys aparecen a finales de los 80, su finalidad es poder reproducir la música almacenada en CDs de audio de manera similar a como se puede hacer con los platos giradiscos, es decir, pudiendo modificar la velocidad a la que se reproduce el tema para acompasarlo a otro ya sonando.
+Los primeros reproductores digitales para \textit{discjockeys} aparecen a finales de los 80, su finalidad es poder reproducir la música almacenada en CDs de audio de manera similar a como se puede hacer con los platos giradiscos, es decir, pudiendo modificar la velocidad a la que se reproduce el tema para acompasarlo a otro ya sonando.
 
 En 1993 comienza en este tipo de aparatos una fuerte revolución de la mano de Pioneer, que comercializa el CDJ-300, primer reproductor de la gama CDJ, gama que posteriormente ha dominado el mercado profesional de reproductores para DJ. Denon también desde el año 93 ha lanzado reproductores profesionales de gran aceptación, siendo la segunda marca en importancia por detrás de Pioneer en el mercado profesional.
 
@@ -153,7 +155,7 @@ Un diagrama general del trabajo se presenta en la figura \ref{fig:diagBloques}. 
 \label{fig:diagBloques}
 \end{figure}
 
-En la seguiente figura \ref{fig:consola} se detalla la interfaz con el usurio, donde el potenciometro lineal varía la velocidad de reproducción del audio de forma permanente (\textit{pitch control}), aumentando la velocidad cuando se de desplaza hacia abajo, produciendo un sonido mas agudo y disminuyendo la velocidad cuando se lo desplaza hacia arriba produciendo un sonido mas grave. Los botonos con símbolos menos (-) y mas (+) cambian la velocidad de reproducción del audio de forma temportal mientra se los mantiene pulsados (\textit{pitch bend}), también se puede observar en esta figura el botón de play/pausa.
+En la seguiente figura \ref{fig:consola} se detalla la interfaz con el usuario, donde el potenciometro lineal varía la velocidad de reproducción del audio de forma permanente (\textit{pitch control}), aumentando la velocidad cuando se de desplaza hacia abajo, produciendo un sonido mas agudo y disminuyendo la velocidad cuando se lo desplaza hacia arriba produciendo un sonido más grave. Los botones con símbolos menos (-) y más (+) cambian la velocidad de reproducción del audio de forma temportal mientra se los mantiene pulsados (\textit{pitch bend}), también se puede observar en esta figura el botón de play/pausa.
 
 \begin{figure}[H]
 \centering 
@@ -200,11 +202,16 @@ El propósito de este proyecto es desarrollar un reproductor de audio digital co
 \begin{consigna}{black}
 El siguiente proyecto incluye:
 \begin{itemize}
+\item Desarrollo de un prototipo del producto basado en EDU-CIAA-NXP.
+\item Desarrollo del Firmware Embebido.
 \item Soporte para almacenamiento de audio.
 \item Control de velocidad de la reproducción del audio de forma temporal.
 \item Control de velocidad de la reproducción del audio de forma permanente.
 \item Reproducción y pausa del audio.
 \item Salida de audio por dos canales.
+\item Generación de documentación tanto del proceso de desarrollo como del firmware
+embebido.
+\item Análisis espectral para validar el correcto funcionamiento del producto.
 \end{itemize}
 
 El presente proyecto no incluye:
@@ -223,7 +230,9 @@ Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
 \item Se tiene acceso al instrumental de testeo necesario (osciloscopio, analizador de espectro)
-\item Se podrán dedicar entre 2hs y 4hs diarias al desarrollo del proyecto fuera del horario laboral
+\item Se podrán dedicar entre 2 hs y 4 hs diarias al desarrollo del proyecto fuera del horario laboral
+\item El fabricante de pcb utilizado es un fabricante profesional cuyo proceso de fabricación
+cumple con la demanda del diseño desarrollado.
 \end{itemize}
 \end{consigna}
 
@@ -244,22 +253,21 @@ Para el desarrollo del presente proyecto se supone que:
 \item Requerimientos de la interfaz de usuario:
 	\begin{enumerate}
 	\item Deberá tener un botón de reproducción/pausa del audio.
-	\item Deberá tener 2 botones de ajuste temporal de velocidad que disminuyen o incrementan la velocidad mientras se encuentran pulsados.
+	\item Deberá tener 2 botones de ajuste temporal de velocidad que disminuyan o incrementen la velocidad mientras se encuentren pulsados.
 	\item Deberá tener un potenciómetro lineal para el ajuste permanente de velocidad.	
 	\end{enumerate}
 \item Requerimientos de fuente de audio:
 	\begin{enumerate}
-	\item Se deberá almacenar el archivo de audio en en una memoria SD
+	\item Se deberá almacenar el archivo de audio en una memoria SD
 	\item El archivo de audio deberá tener formato .wav con 44100 Hz, calidad estéreo de 16 bits.
 	\item El archivo de audio deberá tener formato PCM.
 	\end{enumerate}
 \item Requerimientos de salida de sonido:
 	\begin{enumerate}
-	\item La velocidad normal de reproducción del audio deberó ser de 44100 Hz.
-	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un un 8\%.
+	\item La velocidad normal de reproducción del audio deberá ser de 44100 Hz.
+	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un 8\%.
 	\item El \textit{pinch bend} deberá aumentar o disminuir la velocidad normal de reproducción un 5\%.
 	\item Se deberá implementar dos canales de salida.
-	\item Se deberá presentar un nivel de distorsión mayor a 40 DB.
 	\item El nivel de salida deberá ser de 2,0 Vrms.
 	\end{enumerate}
 \item Requerimientos de alimentacion:
@@ -269,6 +277,40 @@ Para el desarrollo del presente proyecto se supone que:
 \end{enumerate}
 \end{consigna}
 
+\section{Historias de usuarios (\textit{Product backlog})}
+\label{sec:backlog}
+
+\begin{consigna}{black}
+\begin{itemize}
+\item Como \textit{discjockeys} se quiere poder deslizar linealmete un dispositivo para implementar el \textit{pitch control} 
+\begin{itemize}
+\item Ponderación: 12
+\item Prioridad: 5
+\end{itemize}
+\item Como \textit{discjockeys} se quiere poder presionar botones para implementar el control \textit{pitch Bend} 
+\begin{itemize}
+\item Ponderación: 7
+\item Prioridad: 3
+\end{itemize}
+\item Como \textit{discjockeys} se quiere poder presionar un botón para implementar el control \textit{play/pause}
+\begin{itemize}
+\item Ponderación: 3
+\item Prioridad: 2
+\end{itemize}
+\item Como \textit{discjockeys} se quiere tener un dispositivo que reproduzca audio de forma \textit{stand-alone} para no depender de la computadora.
+\begin{itemize}
+\item Ponderación: 1
+\item Prioridad: 1
+\end{itemize}
+\item Como \textit{discjockeys} se quiere tener un dispositivo que reproduzca audio con buena resolución para obtener una buena calidad de sonido.
+\begin{itemize}
+\item Ponderación: 9
+\item Prioridad: 4
+\end{itemize}
+\end{itemize}
+
+\end{consigna}
+
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
@@ -276,7 +318,8 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
 \item Manual de uso
 \item Código fuente
-\item Esquemático de conexionado.
+\item Diagrama esquemático.
+\item Diagrama del PCB.
 \item Informe final
 
 \end{itemize}
@@ -289,68 +332,73 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{consigna}{black}
 
 \begin{enumerate}
-\item Planificación del proyecto (20hs)
+\item Planificación del proyecto (20 hs)
 	\begin{enumerate}
-	\item Realizar la planificación del proyecto (20hs)
+	\item Realizar la planificación del proyecto (20 hs)
 	\end{enumerate}
 \item Recopilación general de información sobre el proyecto (80 hs)
 	\begin{enumerate}
-	\item Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar (10hs)
-	\item Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real (30hs)
-	\item Investigar sobre técnicas de conversión de señal digital a analógica : DAC, PWM o r2r network 		dac (30hs)
+	\item Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar (10 hs)
+	\item Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real (30 hs)
+	\item Investigar sobre técnicas de conversión de señal digital a analógica: DAC, PWM o r2r network DAC (30 hs)
 	\item Buscar información sobre procesadores de audio comerciales (10 hs)
+	\end{enumerate}
+\item Implementación de la consola (50 hs)
+	\begin{enumerate}
+	\item Realizar el circuito electrónico de la interfaz de usuario en protoboard(15 hs)
+	\item Testeo de del circuito electrónico. (5 hs)
+	\item Realizar la lectura de las entradas de la interfaz de usuario. (30 hs)
+	\end{enumerate}
+\item Adquisiscion de audio de la memoria SD (32 hs)
+	\begin{enumerate}
+	\item Realizar circuito electrónico para conectar la memoria SD en protoboard. (5 hs)
+	\item Testeo del circuito electrónico. (5 hs)
+	\item Buscar audio que cumpla con el requisito 4 y almacenarlo en la memoria SD. (2 hs)
+	\item Realizar la lectura del audio almacenado en la tarjeta SD. (20 hs)
+	\end{enumerate}
+\item Implementación del sistema operativo (40 hs)
+	\begin{enumerate}
+	\item Implementar sistema operativo RTEMS (20 hs)
+	\item Implementar manejo de las interrupciones provenientes de la interfaz de usuario (20 hs) 
 	\end{enumerate}
 \item Diseño de hardware (20 hs)
 	\begin{enumerate}
-	\item Diseño esquemático de conexionado. (20hs)
+	\item Diseño esquemático de conexionado. (18 hs)
+	\item Diseño del PCB (10 hs)
+	\item Generación de Gerbers, validación y pedido de fabricación (2 hs)
 	\end{enumerate}
-\item Implementación de la consola (50hs)
+\item Implementación de algoritmos de procesamiento de señales (100 hs)
 	\begin{enumerate}
-	\item Realizar el circuito electrónico de la interfaz de usuario (15hs)
-	\item Testeo de del circuito electrónico. (5hs)
-	\item Realizar la lectura de las entradas de la interfaz de usuario. (30hs)
-	\end{enumerate}
-\item Adquisiscion de audio de la memoria SD (32hs)
-	\begin{enumerate}
-	\item Realizar circuito electrónico para conectar la memoria SD. (5hs)
-	\item Testeo del circuito electrónico. (5hs)
-	\item Burcar audio que cumpla con el requisito 4. y almacenarlo en la memoria SD. (2hs)
-	\item Realizar la lectura del audio almacenado en la tarjeta SD. (20hs)
-	\end{enumerate}
-\item Implementació del sistema operativo (40hs)
-	\begin{enumerate}
-	\item Implementar sistema operativo RTEMS (20hs)
-	\item Implementar manejo de las interrupciones provenientes de la interfaz de usuario (20hs) 
-	\end{enumerate}
-\item Implementación de algoritmos de procesamiento de señales (100hs)
-	\begin{enumerate}
-	\item Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción del audio. (40hs)
-	\item Implementar algoritmo de filtro de interpolación.(40hs)
+	\item Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción del audio. (40 hs)
+	\item Implementar algoritmo de filtro de interpolación.(40 hs)
 	\item Testeo de los algoritmos desarrollados (20 hs)
 	\end{enumerate}
-\item Salida de audio (68 hs)
+
+\item  Armado del prototipo a mano (total 20 horas)
+\begin{enumerate}
+	\item Ubicación de componentes (5 hs)
+	\item Soldadura SMD por aire caliente e inspección (10 hs)
+	\item Soldadura THT, limpieza e inspección (5 hs)
+\end{enumerate}
+\item Salida de audio (48 hs)
 	\begin{enumerate}
-	\item Desarrollo librería de generación del DAC por I2S (40hs)
-	\item Realizar circuito electrónico del DAC externo en protoboard. (5hs)
-	\item Testeo de la salida del DAC con osciloscopio y analizador de espectros. (5 hs)
-	\item Realizar circuito electrónico del filtro de reconstrucción en protoboard. (5hs)
-	\item Realizar circuito electrónico del conector RCA en protoboard. (5hs)
-	\item Testeo de los circuitos electrónico. (8hs)
+	\item Desarrollo de biblioteca de generación del DAC por I2S (40 hs)
+	\item Testeo de la salida del DAC con osciloscopio y analizador de espectros. (8 hs)
 	\end{enumerate}
-\item Integración del sistema (30hs)
+\item Integración del sistema (30 hs)
 	\begin{enumerate}
-	\item Integración de los módulos del sistema (20hs).
-	\item Testeo de funcionamiento (10hs).
+	\item Integración de los módulos del sistema (20 hs).
+	\item Testeo de funcionamiento (10 hs).
 	\end{enumerate}
-\item Pruebas (80hs)
+\item Pruebas (80 hs)
 	\begin{enumerate}
 	\item Desarrollar herramientas de testeo, debug y validación. (40 hs)
 	\item Realizar las pruebas de validación del sistema (40 hs)
 	\end{enumerate}
 \item Documentación (80 hs)
 	\begin{enumerate}
-	\item Realizar el informe final del proyecto (50hs)
-	\item Realizar el manual de uso (30hs)
+	\item Realizar el informe final del proyecto (50 hs)
+	\item Realizar el manual de uso (30 hs)
 	\end{enumerate}
 \end{enumerate}
 
@@ -362,7 +410,7 @@ Cantidad total de horas: (600 hs)
 \label{sec:AoN}
 
 \begin{consigna}{black}
-En la siguiente figura \ref{fig:AoN} observa el diagrama de Activity On Node.
+En la siguiente figura \ref{fig:AoN} se observa el diagrama de Activity On Node. El camino crítico se representa con línea más gruesa y tiene un total de 460 hs.
 
 \begin{figure}[htpb]
 \centering 
@@ -383,7 +431,7 @@ representa el grupo de tareas contenidas en el punto.
 \label{sec:gantt}
 \begin{consigna}{black}
 
-A continuación se observa el diagrama de Gantt \ref{fig:gant1}
+Se observa el diagrama de Gantt. En las figuras \ref{fig:gant1} y \ref{fig:gant2} se muestran las tablas que se utilizaron para la realización del diagrama de Gantt y en las figuras \ref{fig:gant3}, \ref{fig:gant4}, \ref{fig:gant5}, \ref{fig:gant6} y \ref{fig:gant7} se muestra el diagrama de Gantt. Cada color del diagrama representa un grupo de tareas indicado en la sección \ref{sec:wbs}
 
 \begin{figure}[H]
 \centering 
@@ -395,48 +443,44 @@ A continuación se observa el diagrama de Gantt \ref{fig:gant1}
 \begin{figure}[H]
 \centering 
 \includegraphics[width=1.1\textwidth]{./Figuras/gant2.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant2}
+\end{figure}
+
+\begin{landscape}
+\begin{figure}[H]
+\centering 
+\includegraphics[width=1.5\textwidth]{./Figuras/gant3.png}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant3}
 \end{figure}
 
 \begin{figure}[H]
 \centering 
-\includegraphics[width=1.5\textwidth,angle=270]{./Figuras/gant3.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
+\includegraphics[width=1.5\textwidth]{./Figuras/gant4.png}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant4}
 \end{figure}
 
 \begin{figure}[H]
 \centering 
-\includegraphics[width=1.5\textwidth,angle=-90]{./Figuras/gant4.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
-\end{figure}
-
-\begin{figure}[H]
-\centering 
-\includegraphics[width=1.5\textwidth,angle=-90]{./Figuras/gant5.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
+\includegraphics[width=1.5\textwidth]{./Figuras/gant5.png}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant5}
 \end{figure}
 \begin{figure}[H]
 \centering 
-\includegraphics[width=1.5\textwidth,angle=-90]{./Figuras/gant6.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
+\includegraphics[width=1.5\textwidth]{./Figuras/gant6.png}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant6}
 \end{figure}
 \begin{figure}[H]
 \centering 
-\includegraphics[width=1.5\textwidth,angle=-90]{./Figuras/gant7.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
+\includegraphics[width=1.5\textwidth]{./Figuras/gant7.png}
+\caption{Diagrama de \textit{Gantt} continuación}
+\label{fig:gant7}
 \end{figure}
-\begin{figure}[H]
-\centering 
-\includegraphics[width=1.5\textwidth,angle=-90]{./Figuras/gant8.png}
-\caption{Diagrama de \textit{Gantt continuación}}
-\label{fig:gant1}
-\end{figure}
+\end{landscape}
 \end{consigna}
 
 \section{9. Matriz de uso de recursos de materiales}
@@ -451,7 +495,7 @@ A continuación se observa el diagrama de Gantt \ref{fig:gant1}
 \rowcolor[HTML]{C0C0C0} 
 \cellcolor[HTML]{C0C0C0}                                                                       & \cellcolor[HTML]{C0C0C0}                                                           & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos Requeridos (Horas)}                               \\ \cline{3-6} 
 \rowcolor[HTML]{C0C0C0} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea}                       & PC & EDU-CIAA-NXP & Osciloscopio & \begin{tabular}[c]{@{}c@{}}Analizador\\ de\\ espectros\end{tabular}\\
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea}                       & PC & EDU-CIAA-NXP & Osciloscopio & \begin{tabular}[c]{@{}c@{}}Analizador\\ de\\ espectro\end{tabular}\\
 \hline \hline
 \endfirsthead
 
@@ -483,55 +527,60 @@ A continuación se observa el diagrama de Gantt \ref{fig:gant1}
 2.4  & Buscar información sobre procesadores de audio comerciales  & 10 &   & &                                                                    \\ \hline
 
 \rowcolor[HTML]{CBCEFB} 
-3                                                                                              & Diseño de hardware                                                                 &    &              &              &                                                                     \\ \hline
-3.1                                                                                            & Diseño esquemático de conexionado.                                                 & 20 &              &              &                                                                     \\ \hline
+3                                                                                              & Implementació de la consola                                                        &    &              &              &                                                                     \\ \hline
+3.1                                                                                            & Realizar el circuito electrónico de la interfaz de usuario                         &    &              &              &                                                                     \\ \hline
+3.2                                                                                            & Testeo de del circuito electrónico                                                 &    &              &              &                                                                     \\ \hline
+3.3                                                                                            & Realizar la lectura de las entradas de la interfaz de usuario                      & 30 & 30           &              &                                                                     \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-4                                                                                              & Implementació de la consola                                                        &    &              &              &                                                                     \\ \hline
-4.1                                                                                            & Realizar el circuito electrónico de la interfaz de usuario                         &    &              &              &                                                                     \\ \hline
-4.2                                                                                            & Testeo de del circuito electrónico                                                 &    &              &              &                                                                     \\ \hline
-4.3                                                                                            & Realizar la lectura de las entradas de la interfaz de usuario                      & 30 & 30           &              &                                                                     \\ \hline
+4                                                                                              & Adquisiscion de audio de la memoria SD                                             &    &              &              &                                                                     \\ \hline
+4.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD. (5hs)                   &    &              &              &                                                                     \\ \hline
+4.2                                                                                            & Testeo del circuito electrónico.                                                   &    &              &              &                                                                     \\ \hline
+4.3                                                                                            & Buscar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & 2  &              &              &                                                                     \\ \hline
+4.4                                                                                            & Realizar la lectura del audio almacenado en la tarjeta SD.                         & 20 & 20           &              &                                                                     \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-5                                                                                              & Adquisiscion de audio de la memoria SD                                             &    &              &              &                                                                     \\ \hline
-5.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD. (5hs)                   &    &              &              &                                                                     \\ \hline
-5.2                                                                                            & Testeo del circuito electrónico.                                                   &    &              &              &                                                                     \\ \hline
-5.3                                                                                            & Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & 2  &              &              &                                                                     \\ \hline
-5.4                                                                                            & Realizar la lectura del audio almacenado en la tarjeta SD.                         & 20 & 20           &              &                                                                     \\ \hline
+5                                                                                              & Implementació del sistema operativo                                                &    &              &              &                                                                     \\ \hline
+5.1                                                                                            & Implementar sistema operativo RTEMS                                                & 20 & 20           &              &                                                                     \\ \hline
+5.2                                                                                            & Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & 20 & 20           &              &                                                                     \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-6                                                                                              & Implementació del sistema operativo                                                &    &              &              &                                                                     \\ \hline
-6.1                                                                                            & Implementar sistema operativo RTEMS                                                & 20 & 20           &              &                                                                     \\ \hline
-6.2                                                                                            & Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & 20 & 20           &              &                                                                     \\ \hline
+6 & Diseño de hardware  &    &   &              &                                                                     \\ \hline
+6.1 & Diseño esquemático de conexionado.  & 18 &  &  &  \\ \hline
+6.2 & Diseño del PCB.  & 10 &  &  &  \\ \hline
+6.3 & Generación de Gerbers, validación y pedido de fabricación.  & 2 &  &  & 
+\\ \hline
 \rowcolor[HTML]{CBCEFB} 
 7                                                                                              & Implementación de los algoritmos de procesamiento de señales                       &    &              &              &                                                                     \\ \hline
 7.1                                                                                            & Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & 40 & 40           &              &                                                                     \\ \hline
 7.2                                                                                            & Implementar algoritmo de interpolación.                                            & 40 & 40           &              &                                                                     \\ \hline
 7.3  & Testeo de los algoritmos desarrollados         & 20 & 20    &              &                                                                     \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-8                                                                                              & Salida de audio                                                                    &    &              &              &                                                                     \\ \hline
-8.1  & Desarrollo de librería de generacion del DAC por I2S    & 40    & 40             &              &                                                                     \\ \hline
-8.2  & Realizar circuito electrónico del DAC en protoboard    &     &              &              &                                                                     \\ \hline
-8.3  & Testeo de la salida del DAC con osciloscopio y analizadior de espectro    &   &  & 3    &                                                                    2 \\ \hline
-8.4                                                                                            & Realizar circuito electrónico del filtro de reconstrucción en protoboard           &    &              &              &                                                                     \\ \hline
-8.5                                                                                            & Realizar circuito electrónico del conector RCA en protoboard                       &    &              &              &                                                                     \\ \hline
-8.6                                                                                            & Testeo de los circuitos electrónico                                                &    &              & 4            &                                                                     \\ \hline
+8 & Armado del prototipo a mano  &    &   &              &                                                                     \\ \hline
+8.1 & Ubicación de componentes.  & 18 &  &  &  \\ \hline
+8.2 & Soldadura SMD por aire caliente e inspección.  & 10 &  &  &  \\ \hline
+8.3 & Soldadura THT, limpieza e inspección.  & 2 &  &  & 
+\\ \hline
 \rowcolor[HTML]{CBCEFB} 
-9                                                                                              & Integración del sistema                                                            &    &              &              &                                                                     \\ \hline
-9.1                                                                                            & Integración de los módulos del sistema                                             & 20 & 20           &              &                                                                     \\ \hline
-9.2                                                                                            & Testeo de funcionamiento                                                           &    &              & 5            & 5                                                                   \\ \hline
+9                                                                                              & Salida de audio      &    &              &              &                                                                     \\ \hline
+9.1  & Desarrollo de biblioteca de generacion del DAC por I2S    & 40    & 40             &              &                                                                     \\ \hline
+9.2  & Testeo de la salida del DAC con osciloscopio y analizadior de espectro    &   &  & 3    &                                                                    5 \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-10                                                                                             & Pruebas                                                                            &    &              &              &                                                                     \\ \hline
-10.1                                                                                           & Desarrollar herramientas de testeo, debug y validación.                            & 40 &              &              &                                                                     \\ \hline
-10.2                                                                                           & Realizar las pruebas de validación del sistema                                     & 40 & 40           &              &                                                                     \\ \hline
+10                                                                                              & Integración del sistema                                                            &    &              &              &                                                                     \\ \hline
+10.1                                                                                            & Integración de los módulos del sistema                                             & 20 & 20           &              &                                                                     \\ \hline
+10.2                                                                                            & Testeo de funcionamiento                                                           &    &              & 5            & 5                                                                   \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-11                                                                                             & Documentación                                                                      &    &              &              &                                                                     \\ \hline
-11.1                                                                                           & Realizar el informe final del proyecto                                             & 50 &              &              &                                                                     \\ \hline
-11.2                                                                                           & Realizar el manual de uso                                                          & 30 &              &              &  
+11                                                                                             & Pruebas                                                                            &    &              &              &                                                                     \\ \hline
+11.1                                                                                           & Desarrollar herramientas de testeo, debug y validación.                            & 40 &              &              &                                                                     \\ \hline
+11.2                                                                                           & Realizar las pruebas de validación del sistema                                     & 40 & 40           &              &                                                                     \\ \hline
+\rowcolor[HTML]{CBCEFB} 
+12                                                                                             & Documentación                                                                      &    &              &              &                                                                     \\ \hline
+12.1                                                                                           & Realizar el informe final del proyecto                                             & 50 &              &              &                                                                     \\ \hline
+12.2                                                                                           & Realizar el manual de uso   & 30 &   &     &  \\ \hline
 
-
-\\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 \caption{Matriz de uso de recursos materiales.}
 
 \label{ta:recursos}
 \end{longtable}
+
+
 \end{consigna}
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
@@ -548,16 +597,17 @@ potenciómetro lineal                                      & 1                  
 DAC PCM5100A                                            & 1                     & 1000                   & 1000              \\ \hline
 cable RCA                                                 & 1                     & 1000                  & 1000             \\ \hline
 componentes varios                                        & \multicolumn{1}{l|}{} & 1000                  & 1000             \\ \hline
-Hs/hombre                                                 & 600Hs                 & 300                   & 180000           \\ \hline
-\multicolumn{3}{|c|}{SUBTOTAL}                                                                            & 187.350           \\ \hline
+hs de ingeniería                                         & 600                 & 300                   & 180000           \\ \hline
+Fabricación PCB                                           & 10                    & 4000                   & 4000           \\ \hline
+\multicolumn{3}{|c|}{SUBTOTAL}                                                                            & 191.350           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS}                                                              \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Descripción} & Cantidad              & Valor unitario        & Valor total      \\ \hline
-30\% de los costos directos                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & 56.205            \\ \hline
+30\% de los costos directos                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & 57.405            \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL}                                                                            &                  \\ \hline
 \rowcolor[HTML]{C0C0C0} 
-\multicolumn{3}{|c|}{\cellcolor[HTML]{C0C0C0}TOTAL}                                                       & 243.555           \\ \hline
+\multicolumn{3}{|c|}{\cellcolor[HTML]{C0C0C0}TOTAL}                                                       & 248.755           \\ \hline
 \end{tabular}
 \end{table}
 
@@ -591,36 +641,46 @@ Hs/hombre                                                 & 600Hs               
 2.3                                                                                            & Investigar sobre técnicas de conversión de señal digital a analógica               & P                                                                           & I                                                                  & I                                                                    \\ \hline
 2.4                                                                                            & Buscar información sobre procesadores de audio comerciales                         & P                                                                           & I                                                                  & I                                                                    \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-3                                                                                              & Diseño de hardware                                                                 &                                                                             &                                                                    &                                                                      \\ \hline
-3.1                                                                                            & Diseño esquemático de conexionado.                                                 & P                                                                           & A                                                                  & I                                                                    \\ \hline
-\rowcolor[HTML]{CBCEFB} 
 4                                                                                              & Implementació de la consola                                                        &                                                                             &                                                                    &                                                                      \\ \hline
 4.1                                                                                            & Realizar el circuito electrónico de la interfaz de usuario                         & P                                                                           & I                                                                  & I                                                                    \\ \hline
 4.2                                                                                            & Testeo de del circuito electrónico                                                 & P                                                                           & I                                                                  & I                                                                    \\ \hline
 4.3                                                                                            & Realizar la lectura de las entradas de la interfaz de usuario                      & P                                                                           & I                                                                  & I                                                                    \\ \hline
 \rowcolor[HTML]{CBCEFB} 
-5                                                                                              & Adquisiscion de audio de la memoria SD                                             &                                                                             &                                                                    &                                                                      \\ \hline
-5.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD. (5hs)                   & P                                                                           & I                                                                  & I                                                                    \\ \hline
+5     & Adquisiscion de audio de la memoria SD    &   &    &  \\ \hline
+5.1                                                                                            & Realizar circuito electrónico para conectar la memoria SD.                   & P                                                                           & I                                                                  & I                                                                    \\ \hline
 5.2                                                                                            & Testeo del circuito electrónico.                                                   & P                                                                           & I                                                                  & I                                                                    \\ \hline
-5.3                                                                                            & Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & P                                                                           & I                                                                  & C                                                                    \\ \hline
+5.3                                                                                            & Buscar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & P                                                                           & I                                                                  & C                                                                    \\ \hline
 5.4                                                                                            & Realizar la lectura del audio almacenado en la tarjeta SD.                         & P                                                                           & I                                                                  & I                                                                    \\ \hline
 \rowcolor[HTML]{CBCEFB} 
 6                                                                                              & Implementació del sistema operativo                                                &                                                                             &                                                                    &                                                                      \\ \hline
 6.1                                                                                            & Implementar sistema operativo RTEMS                                                & P                                                                           & I                                                                  & I                                                                    \\ \hline
 6.2                                                                                            & Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & P                                                                           & I                                                                  & I                                                                    \\ \hline
 \rowcolor[HTML]{CBCEFB} 
+3 & Diseño de hardware   &   &    &  \\ \hline
+3.1  & Diseño esquemático de conexionado.    & P  & A  & I                                        \\ \hline
+3.1  & Diseño del PCB.    & P  & A  & I                                       
+\\ \hline
+3.1  & Generación de Gerbers, validación y pedido de fabricación.    & P  & I  & I                                       
+\\ \hline
+
+\rowcolor[HTML]{CBCEFB} 
 7                                                                                              & Implementación de los algoritmos de procesamiento de señales                       &                                                                             &                                                                    &                                                                      \\ \hline
 7.1                                                                                            & Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & P                                                                           & C                                                                  & I                                                                    \\ \hline
 7.2                                                                                            & Implementar algoritmo de interpolación.                                            & P                                                                           & C                                                                  & I                                                                    \\ \hline
 7.3                                                                                            & Testeo de los algoritmos desarrollados                                             & P                                                                           & I                                                                  & I                                                                    \\ \hline
 \rowcolor[HTML]{CBCEFB} 
+3 & Armado del prototipo a mano   &  &   &        \\ \hline
+3.1  & Ubicación de componentes    & P  & I  & I                                        \\ \hline
+3.1  & Soldadura SMD por aire caliente e inspección    & P  & I  & I                                       
+\\ \hline
+3.1  & Soldadura THT, limpieza e inspección    & P  & I  & I                                       
+\\ \hline
+\rowcolor[HTML]{CBCEFB} 
 8                                                                                              & Salida de audio                                                                    &                                                                             &                                                                    &                                                                      \\ \hline
-8.1                                                                                            & Desarrollo librería de generación del DAC por I2S                                  & P                                                                           & I                                                                  & I                                                                    \\ \hline
-8.2                                                                                            & Realizar circuito electrónico del DAC externo en protoboard                        & P                                                                           & I                                                                  & I                                                                    \\ \hline
-8.3                                                                                            & Testeo de la salida del DAC con osciloscopio y analizador de espectros             & P                                                                           & A                                                                  & I                                                                    \\ \hline
-8.4                                                                                            & Realizar circuito electrónico del filtro de reconstrucción en protoboard           & P                                                                           & I                                                                  & I                                                                    \\ \hline
-8.5                                                                                            & Realizar circuito electrónico del conector RCA en protoboard                       & P                                                                           & I                                                                  & I                                                                    \\ \hline
-8.6                                                                                            & Testeo de los circuitos electrónico                                                & P                                                                           & I                                                                  & I                                                                    \\ \hline
+8.1                                                                                            & Desarrollo de biblioteca de generación del DAC por I2S                                  & P                                                                           & I                                                                  & I                                                                    \\ \hline
+
+8.3                                                                                            & Testeo de la salida del DAC con osciloscopio y analizador de espectros             & P                                                                           & A                                                                  & I                                                                    
+\\ \hline
 \rowcolor[HTML]{CBCEFB} 
 9                                                                                              & Integración del sistema                                                            &                                                                             &                                                                    &                                                                      \\ \hline
 9.1                                                                                            & Integración de los módulos del sistema                                             & P                                                                           & I                                                                  & I                                                                    \\ \hline
@@ -633,7 +693,7 @@ Hs/hombre                                                 & 600Hs               
 11                                                                                             & Documentación                                                                      &                                                                             &                                                                    &                                                                      \\ \hline
 11.1                                                                                           & Realizar el informe final del proyecto                                             & P                                                                           & A                                                                  & A                                                                    \\ \hline
 11.2                                                                                           & Realizar el manual de uso                                                          & P                                                                           & A                                                                  & A                                                                    
-\\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
+\\ \hline
 \caption{Matriz de asignación de responsabilidades}
 \label{ta:morse}
 \end{longtable}
@@ -658,7 +718,7 @@ a) Identificación de los riesgos y estimación de sus consecuencias:
 Riesgo 1: Retraso en el cronograma de tareas por prioridades laborales, por enfermedad, cortes de luz.
 \begin{itemize}
 \item Severidad (S): 7 - Un retraso en la finalización de las tareas generaría posiblemente un retraso en la fecha de presentación del trabajo final.
-\item Probabilidad de ocurrencia (O): 6. Debido a la crisis sanitaria que se esta atravezando hay altas probabilidad de contraer una enfermedad y además esta obliga a realizar el método de trabajo \textit{home-office} que incrementa las exigencias laborales. Por otro lado Bariloche (lugar donde se desarrolla el proyecto) es zona de grandes nevadas y estas en ocaciones dejan a la ciudad sin electricidad por algunos dias.
+\item Probabilidad de ocurrencia (O): 6. Debido a la crisis sanitaria que se esta atravezando hay altas probabilidad de contraer una enfermedad y además esta obliga a realizar el método de trabajo \textit{home-office} que incrementa las exigencias laborales. Por otro lado, Bariloche (lugar donde se desarrolla el proyecto) es zona de grandes nevadas y estas en ocaciones dejan a la ciudad sin electricidad por algunos días.
 \end{itemize}   
 
 Riesgo 2: Imposibilidad de conseguir DAC  de audio que genere el master-clock internamente.
@@ -669,7 +729,7 @@ Riesgo 2: Imposibilidad de conseguir DAC  de audio que genere el master-clock in
 
 Riesgo 3: Imposibilidad de conseguir un \textit{mixer}
 \begin{itemize}
-\item Severidad (S): 7 - Si no se consigue este dispositivo se deberá evaluar e implementar otra alternativapara para amplificar y escuchar el audio, esto provocará retrasos en el cronograma de trabajo. 
+\item Severidad (S): 7 - Si no se consigue este dispositivo se deberá evaluar e implementar otra alternativa para para amplificar y escuchar el audio, esto provocará retrasos en el cronograma de trabajo. 
 \item Ocurrencia (O): 5 - Si bien este equipo se encuentra a disposición puede suceder que se rompa o se extravíe antes de la fecha de presentación del trabajo final.
 \end{itemize}
 
@@ -682,9 +742,16 @@ Riesgo 4:  Pérdida o destrucción de componentes de hardware.
 Riesgo 5: Pérdida de los archivos del firmware del proyecto.
 \begin{itemize}
 \item Severidad (S): 9 - Si se produce la pérdida o destrucción del prototipo produciría un retraso en el cronograma de trabajo.
-\item Ocurrencia (O): 5 - Si bien esto es poco probable que ocurra sedeben tomar medidas preventivas para disminuir aún más la probabilidad de ocurrencia.
+\item Ocurrencia (O): 5 - Si bien esto es poco probable que ocurra se deben tomar medidas preventivas para disminuir aún más la probabilidad de ocurrencia.
 \end{itemize}
 
+Riesgo 6: Mal diseño del PCB.
+\begin{itemize}
+\item Severidad (S): 8. Implica resolver el problema (contratiempo), volver a fabricar (gasto duplicado y más contratiempos) y pérdida de los componentes montados en el PCB.
+\item Probabilidad de ocurrencia (O): 4. Se revisa varias veces que el diseño cumpla los
+requerimientos, las hojas de datos, etc. pero es posible que algo se pase por alto o
+simplemente no funcione.
+\end{itemize} 
 b) Tabla de gestión de riesgos:
 
 \begin{table}[H]
@@ -699,6 +766,7 @@ Riesgo & S  & O  & RPN & S* & O* & RPN* \\ \hline
 3-Imposibilidad de conseguir \textit{mixer}      & 7  & 5  & 35  & 7  & 3  &  21  \\ \hline
 4-Pérdida de hardware & 8  & 6  & 48  & 8  & 3  &  24  \\ \hline
 5-Pérdida de software      & 9  & 5  & 45  & 9  & 0  &  0  \\ \hline
+5-Mal diseño del PCB      & 8  & 4  & 32  & 8  & 3  &  24  \\ \hline
 \end{tabular}%
 %\end{tabularx}%
 \end{table}
@@ -739,6 +807,15 @@ Riesgo 5: Se utilizará github para realizar el control de versiones, y además,
 \item Severidad (S): 7 - La severidad se mantiene.
 \item Probabilidad de ocurrencia (O): 0 -De esta forma se reduce la probabilidad de ocurrencia a cero, ya que no es posible perder los archivos de firmware del proyecto con las medidas que se adoptarán.
 \end{itemize}
+
+Riesgo 6: Una vez realizado el diseño se dará para su inspección al ingeniero \supname
+\begin{itemize}
+\item Severidad (S): 8 - La severidad se mantiene.
+\item Probabilidad de ocurrencia (O): 3 Se reduce notablemente ocurrencia ya que el
+diseño es inspeccionado por otra persona, y por lo tanto, se reduce la posibilidad de
+error .
+\end{itemize}
+
 \end{consigna}
 
 
@@ -749,68 +826,67 @@ Riesgo 5: Se utilizará github para realizar el control de versiones, y además,
 Se indican los procedimientos de verificación y validación para los diferentes requerimientos del proyecto:
 \begin{enumerate}
 \item Requerimientos del sistema operativo:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item  Se deberá utilizar un sistema operativo de tiempo real.
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Inspección de código} \newline                                                                              
+
+	\textbf{Verificación:} Inspección de código \newline                                                                              
 	\newline 
-	\textbf{Validación:} \textit{Inspección de código}
+	\textbf{Validación:} Inspección de código
 \item Requerimientos de Hardware:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item Se deberá utilizará la CIAA-NXP como computadora principal.
 	\item Se deberá utilizar un DAC de audio  que genere la señal \textit{Master Clock} de la interfaz I2S internamente 
 	\item Deberá utilizar un conector RCA estéreo para conectar el dispositivo a un equipo con entrada  line-in.
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Revisión de hojas de datos} \newline                                                                              
+
+	\textbf{Verificación:} Revisión de hojas de datos \newline                                                                              
 	\newline 
-	\textbf{Validación:} \textit{Entrega de hoja de datos de los componentes electrónicos}
+	\textbf{Validación:} Entrega de hoja de datos de los componentes electrónicos
 \item Requerimientos de la interfaz de usuario:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item Deberá tener un botón de reproducción/pausa del audio.
 	\item Deberá tener 2 botones de ajuste temporal de velocidad que disminuyen o incrementan la velocidad mientras se encuentran pulsados.
 	\item Deberá tener un potenciómetro lineal para el ajuste permanente de velocidad.	
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Análisis visual} \newline                                                                              
+
+	\textbf{Verificación:} Análisis visual \newline                                                                              
 	\newline 
-	\textbf{Validación:} \textit{Análisis visual}
+	\textbf{Validación:} Análisis visual
 \item Requerimientos de fuente de audio:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item Se deberá almacenar el archivo de audio en en una memoria SD
 	\item El archivo de audio deberá tener formato .wav con 44100 Hz, calidad estéreo de 16 bits.
 	\item El archivo de audio deberá tener formato PCM.
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Se utilizará una aplicación \textit{open-source} para extraer los metedatos del audio y se exportará la información a un archivo de texto} \newline \newline                                                                              
-	\textbf{Validación:} \textit{Mediante un archivo de texto que contendrá los metedatos del audio}
+
+	\textbf{Verificación:} Se utilizará una aplicación \textit{open-source} para extraer los metedatos del audio y se exportará la información a un archivo de texto \newline \newline                                                                              
+	\textbf{Validación:} Mediante un archivo de texto que contendrá los metedatos del audio
 \item Requerimientos de salida de sonido:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item La velocidad normal de reproducción del audio deberó ser de 44100 Hz.
 	\item El \textit{pith control} deberá aumentar o disminuir la velocidad normal de reproducción hasta un un 8\%.
 	\item El \textit{pinch bend} deberá aumentar o disminuir la velocidad normal de reproducción un 5\%.
 	\item Se deberá implementar dos canales de salida.
-	\item Se deberá presentar un nivel de distorsión mayor a 40 DB.
 	\item El nivel de salida deberá ser de 2,0 Vrms.
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Se armará un set de pruebas que implementen audios con frecuencias entre los rangos especificados en el requerimiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro y se utilizará una aplicación \textit{open-source} para medir los decibelios. Otro conjunto de pruebas que se realizará es mediante la consola en su modo normal de funcionamiento y se repetiran las mediciones mencionadas anteriormente para probar el sistema integrado} \newline                                                                              
+
+	\textbf{Verificación:} Se armará un set de pruebas que implementen audios con frecuencias entre los rangos especificados en el requerimiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro. Otro conjunto de pruebas que se realizará es mediante la consola en su modo normal de funcionamiento y se repetiran las mediciones mencionadas anteriormente para probar el sistema integrado \newline                                                                              
 	\newline 
-	\textbf{Validación:} \textit{Se usará la consola en su modo normal de funcionamiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro y se utilizará una aplicación \textit{open-source} para medir los decibelios}
+	\textbf{Validación:} Se usará la consola en su modo normal de funcionamiento y se medirá la frecuencia y la tensión de la señal a la salida del DAC con un osciloscopio y  un analizador de espectro.
 \item Requerimientos de alimentacion:
-	\begin{consigna}{gray}
+
 	\begin{enumerate}
 	\item La alimentación deberá ser de 5 VCC por medio de USB.
 	\end{enumerate}
-	\end{consigna}
-	\textbf{Verificación:} \textit{Se utilizará instrumento de medición de tensión} \newline 			\newline                                                                              
-	\textbf{Validación:} \textit{Se utilizará instrumento de medición de tensión}
+
+	\textbf{Verificación:} Se utilizará instrumento de medición de tensión \newline 			\newline                                                                              
+	\textbf{Validación:} Se utilizará instrumento de medición de tensión
 \end{enumerate}
 
 \end{consigna}
@@ -832,7 +908,7 @@ El plan de comunicación del proyecto es el siguiente:
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline 
-Avances y dificultados a enfrentar & \supname   &   Solucionar problemas, establecer pautas para evitar retrasos en el proceso de desarrollo.   & Siempre que haya avances significativos, mínimo una vez por mes. & E-Mail, Google-Meet & \authorname  \\ \hline
+Avances y dificultades a enfrentar & \supname   &   Solucionar problemas, establecer pautas para evitar retrasos en el proceso de desarrollo.   & Siempre que haya avances significativos, mínimo una vez por mes. & E-Mail, Google-Meet & \authorname  \\ \hline
 Avances   & \clientename     &  Comunicar avances. & Siempre que
 se logre algo nuevo que funcione & WhatsApp,E-Mail, Google-Meet            &  \authorname   \\ \hline
 Consultas  & \clientename     &  Realizar consultas de diseño. & Cuando sea necesario & WhatsApp,E-Mail, Google-Meet            &  \authorname   \\ \hline
@@ -847,8 +923,12 @@ Consultas  & \clientename     &  Realizar consultas de diseño. & Cuando sea nec
 Se realizará la compra de una placa de desarrollo EDU-CIAA-NXP. El
 proveedor elegido para esta compra es Electrocomponentes S.A. ya que es uno de los
 puntos de venta de la EDU-CIAA-NXP.\newline 
+\newline 
 El DAC de audio se comprará en Dicomse Componentes Electronicos. El proveedor fue elegido en base a que es el único proveedor de la Argentica que ofrece el componente con las características que se necesita.\newline  
-El resto de los componentes discretos son brindados por Electronina Danher debido a la experiencia personal y confianza que se tiene con el el local de venta.
+\newline 
+El resto de los componentes discretos son brindados por Electronina Danher debido a la experiencia personal y confianza que se tiene con el local de venta. \newline 
+\newline 
+Por último, el PCB se fabricará en Seeed debido a la eficiencia, calidad y costo accesible que brinda la empresa.
 \end{consigna}
 
 \section{16. Seguimiento y control}
@@ -886,33 +966,43 @@ Tarea del WBS                                                                   
 2.1 Realizar el análisis y elección de la electrónica y el microcontrolador a utilizar & Cada componente o C.I. definido                                  & Al definir cada circuito integrado & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
 2.2 Investigar sobre algoritmos de procesamiento de señales digitales en tiempo real   & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
 2.3 Investigar sobre técnicas de conversión de señal digital a analógica               & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-2.4 Buscar información sobre procesadores de audio comerciales                         & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-3.1 Diseño esquemático de conexionado.                                                 & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-4.1 Realizar el circuito electrónico de la interfaz de usuario                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-4.2 Testeo del circuito electrónico                                                    & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-4.3 Realizar la lectura de las entradas de la interfaz de usuario                      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-5.1 Realizar circuito electrónico para conectar la memoria SD.                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-5.2 Testeo del circuito electrónico.                                                   & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-5.3 Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-5.4 Realizar la lectura del audio almacenado en la tarjeta SD.                         & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-6.1 Implementar sistema operativo RTEMS                                                & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-6.2 Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+2.4 Buscar información sobre procesadores de audio comerciales                         & Horas invertidas en la tarea                                     & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            
+\\ \hline
+3.1 Realizar el circuito electrónico de la interfaz de usuario                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+3.2 Testeo del circuito electrónico                                                    & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+3.3 Realizar la lectura de las entradas de la interfaz de usuario                      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.1 Realizar circuito electrónico para conectar la memoria SD.                         & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.2 Testeo del circuito electrónico.                                                   & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.3 Burcar audio que cumpla con el requerimiento  y almacenarlo en la memoria SD.      & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+4.4 Realizar la lectura del audio almacenado en la tarjeta SD.                         & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.1 Implementar sistema operativo RTEMS                                                & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+5.2 Implementar manejo de las interrupciones  provenientes de la interfaz de usuario   & Funcionalidad implementada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            
+\\ \hline
+6.1 Diseño esquemático de conexionado.    & Componentes ubicados  & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            
+\\ \hline
+6.2 Diseño del PCB    & Componentes ubicados  & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail           
+ \\ \hline
+6.3 Generación de Gerbers, validación y pedido de fabricación    & Horas invertidas en la tarea   & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail           
+ \\ \hline
 7.1 Implementar algoritmo de re-muestreo para controlar la velocidad de reproducción   & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
 7.2 Implementar algoritmo de interpolación.                                            & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
 7.3 Testeo de los algoritmos desarrollados                                             & Porcentaje de pruebas unitarias exitosas                         & Al completar cada test unitario    & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.1 Desarrollo librería de generación del DAC por I2S                                  & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.2 Realizar circuito electrónico del DAC externo en protoboard                        & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.3 Testeo de la salida del DAC con osciloscopio y analizador de espectros             & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.4 Realizar circuito electrónico del filtro de reconstrucción en protoboard           & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.5 Realizar circuito electrónico del conector RCA en protoboard                       & Componentes ubicados                                             & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-8.6 Testeo de los circuitos electrónico                                                & Prueba funcional realizada                                       & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-9.1 Integración de los módulos del sistema                                             & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-9.2 Testeo de funcionamiento                                                           & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-10.1 Desarrollar herramientas de testeo, debug y validación.                           & Cada herramienta y utilidad implementada                         & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-10.2 Realizar las pruebas de validación del sistema                                    & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-11.1 Realizar el informe final del proyecto                                            & Cantidad de puntos completados y corregidos                      & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-11.2 Realizar el manual de uso                                                         & Cantidad de puntos completados y corregidos                      & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
-\\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
+8.1 Ubicación de componentes en el PCB    & Componentes ubicados  & Al finalizar la tarea        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            
+\\ \hline
+8.2 Soldadura SMD en el PCB    & Componentes soldados  & Al finalizar la tarea        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            
+\\ \hline
+8.3 Soldadura THT en el PCB    & Componentes soldados  & Al finalizar la tarea        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+
+9.1 Desarrollo librería de generación del DAC por I2S        & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+9.2 Testeo de la salida del DAC con osciloscopio y analizador de espectros             & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail           
+\\ \hline
+10.1 Integración de los módulos del sistema                                             & Funcionalidad implementada                                       & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+10.2 Testeo de funcionamiento                                                           & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+11.1 Desarrollar herramientas de testeo, debug y validación.                           & Cada herramienta y utilidad implementada                         & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+11.2 Realizar las pruebas de validación del sistema                                    & Cada prueba funcional realizada                                  & Al completar cada prueba funcional & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+12.1 Realizar el informe final del proyecto                                            & Cantidad de puntos completados y corregidos                      & Ante cada avance sustancial        & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+12.2 Realizar el manual de uso                                                         & Cantidad de puntos completados y corregidos                      & Al finalizar la tarea              & Ing. Florencia Battocchia & Ing. Pablo Slavkin      & E-Mail            \\ \hline
+
 \caption{Seguimiento de avance}
 \label{ta:seguimiento}
 \end{longtable}
@@ -925,12 +1015,12 @@ Tarea del WBS                                                                   
 Florencia Battocchia es la responsable de analizar el cumplimiento de los
 requerimientos pre-establecidos. A su vez, analizará el tiempo que demoró llevar a cabo los
 distintos grupos de tareas para contrastar con los tiempos del cronograma desarrollado en
-la planificación del proyecto final.\newline  
+la planificación del proyecto final.\newline \newline  
 Florencia Battocchia es la responsable de analizar los resultados de los distintos grupos
 de tareas, teniendo en cuenta las dificultades que se tuvieron durante el proceso de
 desarrollo y cuál fue su metodología de resolución. Luego del análisis generará un
 documento con los aspectos a mejorar en el prototipo del proyecto. Las conclusiones serán
-plasmadas en las memorias del proyecto final.\newline  
+plasmadas en las memorias del proyecto final.\newline  \newline 
 Una vez finalizado el proyecto, se agradecerá formalmente a todos los colaboradores
 y se informará a los interesados la finalización del mismo. En la memoria del proyecto se
 escribirá un agradecimiento a los colaboradores.

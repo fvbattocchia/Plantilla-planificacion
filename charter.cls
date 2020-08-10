@@ -71,6 +71,7 @@
 \usepackage{pgfgantt} 
 \usepackage{graphicx}
 \usepackage{longtable} % para tablas largas
+\usepackage{pdflscape}
 
 %\usepackage{tikz}
 %\usetikzlibrary{arrows, arrows.meta, calc, positioning, quotes, shapes}
